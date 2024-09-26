@@ -1,0 +1,43 @@
+{
+  "_comment_plugins": "Prettier와 Tailwind CSS를 함께 사용할 수 있도록 플러그인 설정",
+  "plugins": ["prettier-plugin-tailwindcss"],
+
+  "_comment_printWidth": "한 줄의 코드 길이를 120자로 설정",
+  "printWidth": 120,
+
+  "_comment_tabWidth": "탭을 2칸으로 설정",
+  "tabWidth": 2,
+
+  "_comment_useTabs": "탭 대신 스페이스를 사용",
+  "useTabs": false,
+
+  "_comment_semi": "세미콜론 사용 여부: 사용하지 않음",
+  "semi": false,
+
+  "_comment_singleQuote": "문자열을 작은 따옴표로 설정",
+  "singleQuote": true,
+
+  "_comment_quoteProps": "객체 속성에 따옴표를 필요한 경우에만 사용",
+  "quoteProps": "as-needed",
+
+  "_comment_jsxSingleQuote": "JSX에서도 문자열을 작은 따옴표로 설정",
+  "jsxSingleQuote": true,
+
+  "_comment_trailingComma": "객체나 배열 마지막에 쉼표를 넣음 (ES5 문법 준수)",
+  "trailingComma": "es5",
+
+  "_comment_bracketSpacing": "객체 중괄호의 안쪽에 공백을 추가",
+  "bracketSpacing": true,
+
+  "_comment_bracketSameLine": "닫는 태그를 같은 줄에 위치시키지 않음",
+  "bracketSameLine": false,
+
+  "_comment_arrowParens": "화살표 함수의 매개변수가 하나일 때에도 괄호를 사용",
+  "arrowParens": "always",
+
+  "_comment_proseWrap": "마크다운에서 줄 바꿈 방식을 유지",
+  "proseWrap": "preserve",
+
+  "_comment_endOfLine": "파일의 줄 끝 스타일을 자동으로 설정",
+  "endOfLine": "auto"
+}
