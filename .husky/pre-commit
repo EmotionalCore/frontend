@@ -1,0 +1,16 @@
+#!/bin/sh
+export PATH="$(npm bin):$PATH"
+# Check for any .js or .tsx files that have been added, copied, or modified
+if [ -n "$(git diff --cached --name-only --diff-filter=ACM | grep -E '\.(js|tsx)$')" ]; then
+  echo "test..."
+  npx lint-staged
+fi
+
+echo "🔍 commit 이전에 lint 규칙을 적용합니다..."
+if npx lint-staged; then
+  echo "✅ 모든 lint 규칙이 성공적으로 적용되었습니다."
+  exit 0
+else
+  echo "❌ lint 규칙 검사에서 오류가 발생했습니다."
+  exit 1
+fi
