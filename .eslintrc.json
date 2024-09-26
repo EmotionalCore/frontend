@@ -15,7 +15,13 @@
     "react/jsx-filename-extension": [1, { "extensions": [".ts", ".tsx"] }],
     "no-unused-vars": "off",
     "@typescript-eslint/no-unused-vars": "warn",
-    "prettier/prettier": ["error", { "endOfLine": "auto" }],
+    "prettier/prettier": [
+      "error",
+      {
+        "singleQuote": true,
+        "parser": "flow"
+      }
+    ],
     "tailwindcss/classnames-order": "error",
     "tailwindcss/no-custom-classname": "warn"
   }
