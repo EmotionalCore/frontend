@@ -2,13 +2,13 @@
 
 ## 체크 사항
 
-- [ ] Feat: 새로운 기능 추가
-- [ ] Fix: 버그 수정
-- [ ] Refactor: 코드 리팩토링
-- [ ] Docs: 문서 작업 (README, pr 템플릿)
+- [ ] Feat - 새로운 기능 추가
+- [ ] Fix - 버그 수정
+- [ ] Refactor - 코드 리팩토링
+- [ ] Docs - 문서 작업 (README, pr 템플릿)
 - [ ] Design - Design 변경
 - [ ] Setting - 개발 환경 설정
-- [ ] Chore: 기타 수정
+- [ ] Chore - 기타 수정
 
 ## 설명
 
