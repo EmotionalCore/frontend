@@ -29,9 +29,6 @@
   "_comment_bracketSpacing": "객체 중괄호의 안쪽에 공백을 추가",
   "bracketSpacing": true,
 
-  "_comment_bracketSameLine": "닫는 태그를 같은 줄에 위치시키지 않음",
-  "bracketSameLine": false,
-
   "_comment_arrowParens": "화살표 함수의 매개변수가 하나일 때에도 괄호를 사용",
   "arrowParens": "always",
 
