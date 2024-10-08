@@ -12,7 +12,7 @@
   "useTabs": false,
 
   "_comment_semi": "세미콜론 사용 여부: 사용하지 않음",
-  "semi": false,
+  "semi": true,
 
   "_comment_singleQuote": "문자열을 작은 따옴표로 설정",
   "singleQuote": true,
