@@ -22,7 +22,7 @@
         "parser": "flow"
       }
     ],
-    "tailwindcss/classnames-order": "error",
-    "tailwindcss/no-custom-classname": "warn"
+    "tailwindcss/classnames-order": "off",
+    "tailwindcss/no-custom-classname": "off"
   }
 }
