@@ -227,6 +227,14 @@ const config: Config = {
         blue: {
           9: '#97C8EB',
         },
+        gray: {
+          B: '#BDBDBD',
+          F: '#FFF',
+          7: '#767676',
+        },
+        red: {
+          E: '#ED1C24',
+        },
       },
     },
   },
