@@ -30,7 +30,8 @@
 
 ### 이슈 번호
 
-> 예시) https://github.com/EmotionalCore/frontend/issues[이슈번호] > https://github.com/EmotionalCore/frontend/issues/
+> 예시) https://github.com/EmotionalCore/frontend/issues[이슈번호]
+> https://github.com/EmotionalCore/frontend/issues/
 
 ### To Reviewers
 
