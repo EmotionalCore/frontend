@@ -1,3 +1,4 @@
+import Image from 'next/image';
 import React from 'react';
 
 interface ButtonProps {
@@ -20,7 +21,7 @@ const Button: React.FC<ButtonProps> = ({ children, onClick, className = '', vari
   const combinedStyles = `${baseStyles} ${variantStyles[variant]} ${className}`;
   return (
     <button onClick={onClick} className={combinedStyles}>
-      {imageSrc ? <img src={imageSrc} alt='Button image' className='size-full object-cover' /> : children}
+      {imageSrc ? <Image src={imageSrc} alt='Button image' className='size-full object-cover' /> : children}
     </button>
   );
 };
