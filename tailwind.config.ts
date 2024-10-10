@@ -231,10 +231,23 @@ const config: Config = {
           B: '#BDBDBD',
           F: '#FFF',
           7: '#767676',
+          A: '#A1A1A1',
+          8: '#888888',
         },
         red: {
           E: '#ED1C24',
         },
+      },
+      spacing: {
+        // 예시) <p className="w-text_bw h-text_bh">
+        text_bw: '272px',
+        text_bh: '50px',
+        image_bw: '40px',
+        image_bh: '40px',
+      },
+      borderRadius: {
+        // 예시) <p className="rounded-lg">
+        lg: '0.5rem',
       },
     },
   },
