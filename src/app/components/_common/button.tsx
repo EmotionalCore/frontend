@@ -7,9 +7,19 @@ interface ButtonProps {
   className?: string;
   variant?: 'primary' | 'cancel' | 'image';
   imageSrc?: string;
+  width: number;
+  height: number;
 }
 
-const Button: React.FC<ButtonProps> = ({ children, onClick, className = '', variant = 'primary', imageSrc }) => {
+const Button: React.FC<ButtonProps> = ({
+  children,
+  onClick,
+  className = '',
+  variant = 'primary',
+  imageSrc,
+  width,
+  height,
+}) => {
   const baseStyles = `text-pretendard rounded-lg focus:outline-none transition ease-in-out text-18-400`;
 
   const variantStyles = {
@@ -21,7 +31,11 @@ const Button: React.FC<ButtonProps> = ({ children, onClick, className = '', vari
   const combinedStyles = `${baseStyles} ${variantStyles[variant]} ${className}`;
   return (
     <button onClick={onClick} className={combinedStyles}>
-      {imageSrc ? <Image src={imageSrc} alt='Button image' className='size-full object-cover' /> : children}
+      {imageSrc ? (
+        <Image src={imageSrc} alt='Button image' className='size-full object-cover' width={width} height={height} />
+      ) : (
+        children
+      )}
     </button>
   );
 };
