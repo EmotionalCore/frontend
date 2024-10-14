@@ -9,10 +9,10 @@ const config: Config = {
   theme: {
     screens: {
       // => @media (max-width: 1119px) { ... }
-      md: { max: '768px' }, // tablet
+      md: { max: '1480px' }, // tablet
 
       // => @media (max-width: 743px) { ... }
-      sm: { max: '375px' }, // mobile
+      sm: { max: '768px' }, // mobile
     },
     fontSize: {
       // <p class="text-12-400 ...">The quick brown fox ...</p> 처럼 사용
@@ -151,6 +151,13 @@ const config: Config = {
           fontWeight: '700',
         },
       ],
+      //fontsize: 30px
+      '30-400': [
+        '3rem',
+        {
+          fontWeight: '400',
+        },
+      ],
 
       //fontsize: 36px
       '36-700': [
@@ -159,7 +166,13 @@ const config: Config = {
           fontWeight: '700',
         },
       ],
-
+      //fontsize: 38px
+      '38-400': [
+        '3.8rem',
+        {
+          fontWeight: '400',
+        },
+      ],
       //fontsize: 40px
       '40-700': [
         '4rem',
@@ -233,6 +246,7 @@ const config: Config = {
           7: '#767676',
           A: '#A1A1A1',
           8: '#888888',
+          D: '#D9D9D9',
         },
         red: {
           E: '#ED1C24',
