@@ -232,36 +232,45 @@ const config: Config = {
     extend: {
       fontFamily: {
         // 예시) <p className="text-pretendard">
-        pretendard: ['var(--font-pretendard)', 'sans-serif'],
-        laundry: ['var(--font-laundry)', 'sans-serif'],
+        SCDream1: ['var(--font-SCDream1)'],
+        SCDream2: ['var(--font-SCDream2)'],
+        SCDream3: ['var(--font-SCDream3)'],
+        SCDream4: ['var(--font-SCDream4)'],
+        SCDream5: ['var(--font-SCDream5)'],
+        SCDream6: ['var(--font-SCDream6)'],
+        SCDream7: ['var(--font-SCDream7)'],
+        SCDream8: ['var(--font-SCDream8)'],
+        SCDream9: ['var(--font-SCDream9)'],
       },
       colors: {
         // 예시) <p className="bg-blue-9">
+        white: {
+          F: '#FFF',
+        },
+        black: {
+          2: '#222',
+          0: '#000',
+        },
         blue: {
-          9: '#97C8EB',
+          0: '#067DFD',
+          '00': '#0062E5',
+          B: '#BDBDBD',
+          C: '#CBE8FF',
+          E: '#EEF7FF',
+          3: '#329CFF',
         },
         gray: {
+          E: '#E0E0E0',
+          EE: '#EEE',
+          9: '#9E9E9E',
+          F: '#F5F5F5',
+          6: '#616161',
           B: '#BDBDBD',
-          F: '#FFF',
-          7: '#767676',
-          A: '#A1A1A1',
-          8: '#888888',
-          D: '#D9D9D9',
+          FA: '#FAFAFA',
         },
         red: {
-          E: '#ED1C24',
+          E: '#EF2B2A',
         },
-      },
-      spacing: {
-        // 예시) <p className="w-text_bw h-text_bh">
-        text_bw: '272px',
-        text_bh: '50px',
-        image_bw: '40px',
-        image_bh: '40px',
-      },
-      borderRadius: {
-        // 예시) <p className="rounded-lg">
-        lg: '0.5rem',
       },
     },
   },
