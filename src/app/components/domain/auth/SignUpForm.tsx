@@ -115,7 +115,7 @@ const SignUpForm = () => {
       <button
         type='submit'
         disabled={!isValid || signUpMutation.isPending}
-        className='w-full rounded-lg border-[0.1rem] border-solid border-black p-2 transition-colors hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50'
+        className='border-black w-full rounded-lg border-[0.1rem] border-solid p-2 transition-colors hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50'
       >
         {signUpMutation.isPending ? 'Signing Up...' : 'Sign Up'}
       </button>
