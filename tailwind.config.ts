@@ -83,6 +83,13 @@ const config: Config = {
       ],
 
       //fontsize: 18px
+
+      '18-200': [
+        '1.8rem',
+        {
+          fontWeight: '200',
+        },
+      ],
       '18-400': [
         '1.8rem',
         {
@@ -137,6 +144,12 @@ const config: Config = {
       ],
 
       //fontsize: 24px
+      '24-500': [
+        '2.4rem',
+        {
+          fontWeight: '500',
+        },
+      ],
       '24-700': [
         '2.4rem',
         {
