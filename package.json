@@ -21,11 +21,11 @@
     "@tanstack/react-query": "^5.61.0",
     "axios": "^1.7.7",
     "lucide-react": "^0.460.0",
-    "next": "14.2.13",
+    "next": "^14.2.22",
     "react": "^18",
     "react-dom": "^18",
     "react-hook-form": "^7.53.2",
-    "react-quill": "^2.0.0",
+    "react-quill": "^0.0.2",
     "zod": "^3.23.8",
     "zustand": "^5.0.1"
   },
