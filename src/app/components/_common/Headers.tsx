@@ -6,7 +6,7 @@ import AddIcon from '/public/image/add-icon.svg';
 
 const Headers = () => {
   return (
-    <div className='flex h-[6.3rem] items-center bg-white-F font-SCDream5 text-[1.8rem] text-gray-900'>
+    <div className='flex h-[6.3rem] items-center bg-white-F font-SCDream5 text-[1.8rem] text-black-2'>
       <div className='ml-[36rem] text-[2.4rem] text-black-0'>감성코어</div>
       <div className='ml-[4.3rem]'>
         <Link href='/' passHref>
@@ -34,7 +34,7 @@ const Headers = () => {
             <div className='relative h-[1.4rem] w-[1.3222rem]'>
               <Image src={AddIcon} alt='add icon' layout='fill' />
             </div>
-            <div className='ml-[0.7rem] text-[2.4rem] text-[#067DFD]'>작품등록</div>
+            <div className='ml-[0.7rem] text-[2.4rem] text-blue-0'>작품등록</div>
           </div>
         </Link>
       </div>
