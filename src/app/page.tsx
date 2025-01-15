@@ -48,13 +48,14 @@ export default function Home() {
   );
 }
 */
-//input 사용 예시
+//input 전체 사용 예시
+
 'use client';
 import React from 'react';
 import { useForm } from 'react-hook-form';
 import Inputs from './components/_common/Inputs/Inputs';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { InputsValidation } from './components/_common/Inputs/InputsValidation';
+import { InputsValidation } from './lib/zod/InputsValidation';
 
 interface FormData {
   nickname: string;
@@ -82,47 +83,27 @@ export default function Home() {
       search: '',
     },
   });
+
   const currentValues = watch();
   function handleError() {
-    console.log(currentValues);
+    //1개 이상의 input이 유효성 검사를 통과하지 못했을 때 실행
+    console.log(currentValues, errors);
   }
   function onSubmit(data: FormData) {
-    console.log(currentValues, data);
+    //모든 input이 유효성 검사를 통과했을 때 실행
+    console.log(currentValues);
   }
 
   return (
     <div>
       <form noValidate onSubmit={handleSubmit(onSubmit, handleError)}>
-        <Inputs
-          name='nickname'
-          type='text'
-          label='Nickname'
-          placeholder='닉네임을 입력해주세요'
-          register={register('nickname')}
-          errors={errors}
-        />
-
-        <Inputs
-          name='email'
-          type='email'
-          label='Email'
-          placeholder='이메일을 입력해주세요'
-          register={register('email')}
-          errors={errors}
-        />
-        <Inputs
-          name='password'
-          type='password'
-          label='Password'
-          placeholder='비밀번호를 입력해주세요'
-          register={register('password')}
-          errors={errors}
-        />
+        <Inputs name='nickname' type='text' label='Nickname' register={register('nickname')} errors={errors} />
+        <Inputs name='email' type='email' label='Email' register={register('email')} errors={errors} />
+        <Inputs name='password' type='password' label='Password' register={register('password')} errors={errors} />
         <Inputs
           name='passwordConfirm'
           type='password'
           label='Confirm Password'
-          placeholder='비밀번호 확인을 입력해주세요'
           register={register('passwordConfirm')}
           errors={errors}
         />
@@ -133,14 +114,7 @@ export default function Home() {
           register={register('isover14')}
           errors={errors}
         />
-        <Inputs
-          name='search'
-          type='text'
-          label='Search'
-          placeholder='검색어를 입력해주세요'
-          register={register('search')}
-          errors={errors}
-        />
+        <Inputs name='search' type='text' label='Search' register={register('search')} errors={errors} />
         <button type='submit'>submit</button>
       </form>
     </div>
