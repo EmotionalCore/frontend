@@ -1,5 +1,22 @@
 import React from 'react';
 import { UseFormRegisterReturn, FieldErrors } from 'react-hook-form';
+import { cn } from '@/app/utils/cn';
+import { cva, VariantProps } from 'class-variance-authority';
+import { InputsValidation } from '@/app/lib/zod/InputsValidation';
+
+const inputVariants = cva('text-gray-6', {
+  variants: {
+    color: {
+      default: 'text-gray-6 text-1.6rem font-SCDream5',
+      check: 'text-gray-6 text-1.8rem font-SCDream2',
+    },
+    size: {
+      default: 'w-[58rem] h-[11rem]',
+    },
+  },
+  compoundVariants: [],
+  defaultVariants: {},
+});
 
 interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
   name: string;
