@@ -1,4 +1,4 @@
-import React from 'react';
+import React, { useState } from 'react';
 import { UseFormRegisterReturn, FieldErrors } from 'react-hook-form';
 import { cn } from '@/app/utils/cn';
 import { cva, VariantProps } from 'class-variance-authority';
@@ -28,10 +28,26 @@ interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
 }
 
 export default function Inputs({ name, type, className, label, register, errors, ...props }: InputProps) {
+  const [showPassword, setShowPassword] = useState(false);
+
+  function passwordShowChange() {
+    setShowPassword(!showPassword);
+  }
   return (
     <div>
       <label htmlFor={name}>{label}</label>
-      <input id={name} type={type} className={className} {...register} {...props} />
+      <input
+        id={name}
+        type={type == 'password' && showPassword ? 'text' : type}
+        className={className}
+        {...register}
+        {...props}
+      />
+      {type == 'password' && (
+        <button type='button' title='Password Show or Hide' onClick={passwordShowChange}>
+          {showPassword ? <div>hide</div> : <div>show</div>}
+        </button>
+      )}
       {errors[name]?.message && <span>{errors[name].message as string}</span>}
     </div>
   );
