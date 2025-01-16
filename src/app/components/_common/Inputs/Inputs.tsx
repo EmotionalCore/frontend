@@ -1,8 +1,10 @@
 import React, { useState } from 'react';
-import { UseFormRegisterReturn, FieldErrors } from 'react-hook-form';
 import { cn } from '@/app/utils/cn';
 import { cva, VariantProps } from 'class-variance-authority';
-import { InputsValidation } from '@/app/lib/zod/InputsValidation';
+import Image from 'next/image';
+import ShowPasswordIcon from '/public/image/show-pwd.svg';
+import HidePasswordIcon from '/public/image/hide-pwd.svg';
+import { InputProps } from './types';
 
 const inputVariants = cva('text-gray-6', {
   variants: {
@@ -11,21 +13,12 @@ const inputVariants = cva('text-gray-6', {
       check: 'text-gray-6 text-1.8rem font-SCDream2',
     },
     size: {
-      default: 'w-[58rem] h-[11rem]',
+      default: 'w-[58rem] h-[6.2rem]',
     },
   },
   compoundVariants: [],
   defaultVariants: {},
 });
-
-interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> {
-  name: string;
-  type: 'text' | 'password' | 'email' | 'checkbox' | 'search';
-  className?: string;
-  label: string;
-  register: UseFormRegisterReturn;
-  errors: FieldErrors;
-}
 
 export default function Inputs({ name, type, className, label, register, errors, ...props }: InputProps) {
   const [showPassword, setShowPassword] = useState(false);
@@ -39,13 +32,17 @@ export default function Inputs({ name, type, className, label, register, errors,
       <input
         id={name}
         type={type == 'password' && showPassword ? 'text' : type}
-        className={className}
+        className={cn(inputVariants({ color: 'default', size: 'default' }))}
         {...register}
         {...props}
       />
       {type == 'password' && (
         <button type='button' title='Password Show or Hide' onClick={passwordShowChange}>
-          {showPassword ? <div>hide</div> : <div>show</div>}
+          {showPassword ? (
+            <Image src={HidePasswordIcon} alt='hide password' />
+          ) : (
+            <Image src={ShowPasswordIcon} alt='show password' />
+          )}
         </button>
       )}
       {errors[name]?.message && <span>{errors[name].message as string}</span>}
