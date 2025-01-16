@@ -100,17 +100,24 @@ export default function Home() {
         <Inputs
           name='nickname'
           type='text'
-          label='Nickname'
+          label='닉네임'
           register={register('nickname')}
-          helpText={'헬퍼'}
+          helpText={'10자 이내로 입력해주세요.'}
           errors={errors}
         />
-        <Inputs name='email' type='email' label='Email' register={register('email')} errors={errors} />
-        <Inputs name='password' type='password' label='Password' register={register('password')} errors={errors} />
+        <Inputs name='email' type='email' label='이메일' register={register('email')} errors={errors} />
+        <Inputs
+          name='password'
+          type='password'
+          label='비밀번호'
+          register={register('password')}
+          helpText={'영문 대, 소문자/숫자/특수문자 포함, 8~15자'}
+          errors={errors}
+        />
         <Inputs
           name='passwordConfirm'
           type='password'
-          label='Confirm Password'
+          label='비밀번호 확인'
           register={register('passwordConfirm')}
           errors={errors}
         />
@@ -122,7 +129,14 @@ export default function Home() {
           errors={errors}
         />
         <Inputs name='search' type='text' label='Search' register={register('search')} errors={errors} />
-        <button type='submit'>submit</button>
+        <div className='flex justify-center'>
+          <button
+            type='submit'
+            className='h-[6.2rem] w-[59rem] justify-center bg-gray-EE font-SCDream2 text-[1.6rem] text-gray-9'
+          >
+            submit
+          </button>
+        </div>
       </form>
     </div>
   );
