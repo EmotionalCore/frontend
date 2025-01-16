@@ -97,7 +97,14 @@ export default function Home() {
   return (
     <div>
       <form noValidate onSubmit={handleSubmit(onSubmit, handleError)}>
-        <Inputs name='nickname' type='text' label='Nickname' register={register('nickname')} errors={errors} />
+        <Inputs
+          name='nickname'
+          type='text'
+          label='Nickname'
+          register={register('nickname')}
+          helpText={'헬퍼'}
+          errors={errors}
+        />
         <Inputs name='email' type='email' label='Email' register={register('email')} errors={errors} />
         <Inputs name='password' type='password' label='Password' register={register('password')} errors={errors} />
         <Inputs
