@@ -23,7 +23,6 @@ export const InputsValidation = z
       .max(15)
       .regex(passwordPattern, { message: '' }),
     passwordConfirm: z.string().min(8, { message: '' }).max(15),
-    isover14: z.boolean().refine((value) => value === true, { message: '14세 이상만 가능합니다' }),
     search: z.string().min(1, { message: '검색어를 입력해주세요.' }),
   })
   .refine((value) => value.password == value.passwordConfirm, {
