@@ -1,5 +1,5 @@
 //Dropdown 사용 예시
-/*
+
 'use client';
 import DropdownMenu, { MenuItemProps } from './components/_common/DropdownMenu';
 import DeleteIcon from '../../public/image/delete-icon.svg';
@@ -45,99 +45,5 @@ export default function Home() {
         <DropdownMenu items={items} size='default' variant='default' />
       </div>
     </main>
-  );
-}
-*/
-//input 전체 사용 예시
-
-'use client';
-import React from 'react';
-import { useForm } from 'react-hook-form';
-import Inputs from './components/_common/Inputs/Inputs';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { InputsValidation } from './lib/zod/InputsValidation';
-
-interface FormData {
-  nickname: string;
-  email: string;
-  password: string;
-  passwordConfirm: string;
-  isover14: boolean;
-  search: string;
-}
-
-export default function Home() {
-  const {
-    register,
-    handleSubmit,
-    formState: { errors },
-    watch,
-  } = useForm<FormData>({
-    resolver: zodResolver(InputsValidation),
-    defaultValues: {
-      nickname: '',
-      email: '',
-      password: '',
-      passwordConfirm: '',
-      isover14: false,
-      search: '',
-    },
-  });
-
-  const currentValues = watch();
-  function handleError() {
-    //1개 이상의 input이 유효성 검사를 통과하지 못했을 때 실행
-    console.log(currentValues, errors);
-  }
-  function onSubmit(data: FormData) {
-    //모든 input이 유효성 검사를 통과했을 때 실행
-    console.log(currentValues);
-  }
-
-  return (
-    <div>
-      <form noValidate onSubmit={handleSubmit(onSubmit, handleError)}>
-        <Inputs
-          name='nickname'
-          type='text'
-          label='닉네임'
-          register={register('nickname')}
-          helpText={'10자 이내로 입력해주세요.'}
-          errors={errors}
-        />
-        <Inputs name='email' type='email' label='이메일' register={register('email')} errors={errors} />
-        <Inputs
-          name='password'
-          type='password'
-          label='비밀번호'
-          register={register('password')}
-          helpText={'영문 대, 소문자/숫자/특수문자 포함, 8~15자'}
-          errors={errors}
-        />
-        <Inputs
-          name='passwordConfirm'
-          type='password'
-          label='비밀번호 확인'
-          register={register('passwordConfirm')}
-          errors={errors}
-        />
-        <Inputs
-          name='isover14'
-          type='checkbox'
-          label='14세 이상입니다'
-          register={register('isover14')}
-          errors={errors}
-        />
-        <Inputs name='search' type='text' label='Search' register={register('search')} errors={errors} />
-        <div className='flex justify-center'>
-          <button
-            type='submit'
-            className='h-[6.2rem] w-[59rem] justify-center bg-gray-EE font-SCDream2 text-[1.6rem] text-gray-9'
-          >
-            submit
-          </button>
-        </div>
-      </form>
-    </div>
   );
 }
