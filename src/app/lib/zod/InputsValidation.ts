@@ -22,7 +22,7 @@ export const InputsValidation = z
       .min(8, { message: '비밀번호를 입력해주세요.' })
       .max(15)
       .regex(passwordPattern, { message: '' }),
-    passwordConfirm: z.string().min(8, { message: '' }).max(15),
+    passwordConfirm: z.string().min(8, { message: '' }).max(15, { message: '' }),
   })
   .refine((value) => value.password == value.passwordConfirm, {
     message: '비밀번호가 틀립니다',

@@ -8,4 +8,5 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
   register: UseFormRegisterReturn;
   errors: FieldErrors;
   helpText?: string;
+  placeholder?: string;
 }
