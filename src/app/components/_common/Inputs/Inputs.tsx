@@ -69,7 +69,12 @@ const Inputs = ({ name, type, placeholder, helpText, className, label, register,
   const passwordShowChange = () => {
     setShowPassword(!showPassword);
   };
-
+  const passwordType = () => {
+    if (type == 'password') {
+      return showPassword ? 'text' : type;
+    }
+    return type;
+  };
   return (
     <>
       {(type == 'text' || type == 'email' || type == 'password') && (
@@ -80,7 +85,7 @@ const Inputs = ({ name, type, placeholder, helpText, className, label, register,
           <div className='relative mt-[1.4rem]'>
             <input
               id={name}
-              type={type == 'password' && showPassword ? 'text' : type}
+              type={passwordType()}
               className={errors[name] ? cn(inputTextVariants({ border: 'red' })) : cn(inputTextVariants())}
               {...register}
               {...props}
