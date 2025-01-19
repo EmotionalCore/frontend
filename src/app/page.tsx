@@ -65,7 +65,7 @@ interface FormData {
   search: string;
 }
 
-export default function Home() {
+const Home = () => {
   const {
     register,
     handleSubmit,
@@ -84,14 +84,15 @@ export default function Home() {
   });
 
   const currentValues = watch();
-  function handleError() {
+
+  const handleError = () => {
     //1개 이상의 input이 유효성 검사를 통과하지 못했을 때 실행
     console.log(currentValues, errors);
-  }
-  function onSubmit(data: FormData) {
+  };
+  const onSubmit = (data: FormData) => {
     //모든 input이 유효성 검사를 통과했을 때 실행
     console.log(currentValues);
-  }
+  };
 
   return (
     <div>
@@ -140,4 +141,6 @@ export default function Home() {
       </form>
     </div>
   );
-}
+};
+
+export default Home;

@@ -64,22 +64,11 @@ const inputSidetextVariants = cva('', {
   },
 });
 
-export default function Inputs({
-  name,
-  type,
-  placeholder,
-  helpText,
-  className,
-  label,
-  register,
-  errors,
-  ...props
-}: InputProps) {
+const Inputs = ({ name, type, placeholder, helpText, className, label, register, errors, ...props }: InputProps) => {
   const [showPassword, setShowPassword] = useState(false);
-
-  function passwordShowChange() {
+  const passwordShowChange = () => {
     setShowPassword(!showPassword);
-  }
+  };
 
   return (
     <>
@@ -141,4 +130,5 @@ export default function Inputs({
       )}
     </>
   );
-}
+};
+export default Inputs;
