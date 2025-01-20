@@ -1,16 +1,17 @@
 import { cn } from '@/app/utils/cn';
-import { cva, VariantProps } from 'class-variance-authority';
+import { cva } from 'class-variance-authority';
 import Image from 'next/image';
 import React from 'react';
+import { DropdownMenuProps, MenuItemProps } from './type';
 
-const dropdownMenuVariants = cva('size-full shrink-0 rounded-[0.8rem] border-gray-B border-[0.1rem] bg-white', {
+export const dropdownMenuVariants = cva('size-full shrink-0 rounded-[0.8rem] border-gray-B border-[0.1rem] bg-white', {
   variants: {
     variant: {
       default: 'shadow-lg',
       sm: 'shadow-sm',
     },
     size: {
-      default: 'w-[24.2rem] h-[20.9re,]',
+      default: 'w-[24.2rem] h-[20.9rem]',
     },
   },
   defaultVariants: {
@@ -33,19 +34,6 @@ const menuItemVariants = cva(
     },
   }
 );
-
-export interface MenuItemProps {
-  id: string;
-  label: string;
-  icon: string;
-  alt: string;
-  color?: 'default' | 'red';
-  onClick?: () => void;
-}
-
-interface DropdownMenuProps extends VariantProps<typeof dropdownMenuVariants> {
-  items: MenuItemProps[];
-}
 
 const MenuItem = ({ label, icon, alt, color, onClick }: MenuItemProps) => {
   return (
