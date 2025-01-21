@@ -3,6 +3,8 @@ import DropdownMenu, { MenuItemProps } from './components/_common/DropdownMenu';
 import DeleteIcon from '../../public/image/delete-icon.svg';
 import ShareIcon from '../../public/image/share-icon.svg';
 import EditIcon from '../../public/image/edit-icon.svg';
+import Buttons from './components/_common/Buttons';
+
 const items: MenuItemProps[] = [
   {
     id: '1',
@@ -42,6 +44,9 @@ export default function Home() {
       <div className='flex items-center justify-center'>
         <DropdownMenu items={items} size='default' variant='default' />
       </div>
+      <Buttons intent='white' size='xxs' outline={false}>
+        태그 연습
+      </Buttons>
     </main>
   );
 }
