@@ -4,6 +4,7 @@ import DeleteIcon from '../../public/image/delete-icon.svg';
 import ShareIcon from '../../public/image/share-icon.svg';
 import EditIcon from '../../public/image/edit-icon.svg';
 import Buttons from './components/_common/Buttons';
+import Avatar from './components/_common/Avatar';
 
 const items: MenuItemProps[] = [
   {
@@ -47,6 +48,8 @@ export default function Home() {
       <Buttons intent='white' size='xxs' outline={false}>
         태그 연습
       </Buttons>
+      <br />
+      <Avatar size='lg' src='https://media.bunjang.co.kr/product/288379457_1_1725770265_w360.jpg' alt='아바타'></Avatar>
     </main>
   );
 }
