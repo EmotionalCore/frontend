@@ -2,6 +2,8 @@ import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
 import Providers from './lib/react-query/providers';
+import Headers from './components/_common/Headers';
+import Footer from './components/_common/Footer';
 
 const SCDream1 = localFont({
   src: './fonts/SCDream1.otf',
@@ -72,7 +74,11 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
   return (
     <html lang='kr' className={fontVariables}>
       <Providers>
-        <body className={fontClassNames}>{children}</body>
+        <body className={fontClassNames}>
+          <Headers />
+          {children}
+          <Footer />
+        </body>
       </Providers>
     </html>
   );
