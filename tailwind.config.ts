@@ -177,6 +177,13 @@ const config: Config = {
           fontWeight: '400',
         },
       ],
+      //fontsize: 32px
+      '32-500': [
+        '3.2rem',
+        {
+          fontWeight: '500',
+        },
+      ],
 
       //fontsize: 36px
       '36-700': [
