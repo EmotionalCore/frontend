@@ -1,4 +1,4 @@
-import LogoImage from '@/../public/image/logo.svg';
+import LogoImage from '@/../public/image/footer-logo.svg';
 import Image from 'next/image';
 
 const footerUiData = {
