@@ -5,6 +5,9 @@ const worksBaseUrl = '/api/work/';
 export const signAddress = {
   signIn: `${memberBaseUrl}signin`,
   signUp: `${memberBaseUrl}signup`,
+  findPassword: `${memberBaseUrl}findpassword`,
+  userName: `${memberBaseUrl}check/username`,
+  token: `${memberBaseUrl}token/refresh`,
 };
 
 //소셜 로그인 API
@@ -17,19 +20,19 @@ export const oauthAddress = {
 //작품 API
 export const worksAddress = {
   search: {
-    default: `${worksBaseUrl}search`,
+    default: (keyword: string) => `${worksBaseUrl}search=${keyword}`,
     popular: `${worksBaseUrl}popular`,
   },
 
   recommend: {
-    webtoon: `${worksBaseUrl}webtoon`,
-    poem: `${worksBaseUrl}poem`,
-    novel: `${worksBaseUrl}novel`,
+    webtoon: `${worksBaseUrl}recommend/webtoon`,
+    poem: `${worksBaseUrl}recommend/poem`,
+    novel: `${worksBaseUrl}recommend/novel`,
   },
 
   new: {
     default: `${worksBaseUrl}new`,
-    author: `${worksBaseUrl}author`,
+    author: `${worksBaseUrl}/new/author`,
   },
   all: `${worksBaseUrl}all`,
   best: `${worksBaseUrl}best/today`,
