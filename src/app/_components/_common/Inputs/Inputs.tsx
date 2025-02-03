@@ -63,7 +63,6 @@ const inputSidetextVariants = cva('', {
     font: 'f200',
   },
 });
-
 const Inputs = ({ name, type, placeholder, helpText, className, label, register, errors, ...props }: InputProps) => {
   const [showPassword, setShowPassword] = useState(false);
   const passwordShowChange = () => {
@@ -148,7 +147,7 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { InputsValidation } from './lib/zod/InputsValidation';
 
 interface FormData {
-  nickname: string;
+  username: string;
   email: string;
   password: string;
   passwordConfirm: string;
@@ -165,7 +164,7 @@ const Home = () => {
   } = useForm<FormData>({
     resolver: zodResolver(InputsValidation),
     defaultValues: {
-      nickname: '',
+      username: '',
       email: '',
       password: '',
       passwordConfirm: '',
@@ -191,10 +190,10 @@ const Home = () => {
         <Inputs name='search' type='search' label='Search' register={register('search')} errors={errors} />
 
         <Inputs
-          name='nickname'
+          name='username'
           type='text'
           label='닉네임'
-          register={register('nickname')}
+          register={register('username')}
           helpText={'10자 이내로 입력해주세요.'}
           errors={errors}
         />

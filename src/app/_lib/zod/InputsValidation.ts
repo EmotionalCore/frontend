@@ -1,17 +1,17 @@
 import z from 'zod';
 
-const dummyNickname = ['nickname1', 'nickname2', 'nickname3', 'nickname4'];
+const dummyUsername = ['username1', 'username2', 'username3', 'username4'];
 const dummyEmail = ['q1@qq.qq', 'q2@qq.qq', 'q3@qq.qq', 'q4@qq.qq'];
 
 const passwordPattern = new RegExp(/^(?=.*?[A-Z])(?=.*?[a-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*-]).+$/);
 
 export const InputsValidation = z
   .object({
-    nickname: z
+    username: z
       .string()
       .min(1, { message: '닉네임을 입력해주세요.' })
       .max(10)
-      .refine((value) => !dummyNickname.includes(value), { message: '중복되지 않는 닉네임으로 변경해주세요.' }),
+      .refine((value) => !dummyUsername.includes(value), { message: '중복되지 않는 닉네임으로 변경해주세요.' }),
     email: z
       .string()
       .toLowerCase()
