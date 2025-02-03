@@ -1,17 +1,22 @@
 'use client';
 import React from 'react';
+import Inputs from '@/app/_components/_common/Inputs/Inputs';
+
 import { useForm, Controller } from 'react-hook-form';
 import { useMutation } from '@tanstack/react-query';
 import { PostSignUpProps } from '../../../../api/auth/type';
 import { postSignUpApi } from '../../../../api/auth';
-
+import { zodResolver } from '@hookform/resolvers/zod';
+import { InputsValidation } from '../../../../validation/auth';
 const SignUpForm = () => {
   const {
+    register,
     control,
     handleSubmit,
     formState: { errors, isValid },
     reset,
   } = useForm<PostSignUpProps>({
+    resolver: zodResolver(InputsValidation),
     defaultValues: {
       email: '',
       username: '',
@@ -38,77 +43,45 @@ const SignUpForm = () => {
   return (
     <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col items-center justify-center gap-4 rounded-md p-6'>
       <Controller
-        name='email'
-        control={control}
-        rules={{
-          required: 'Email is required',
-          pattern: {
-            value: /^[^\s@]+@[^\s@]+\.[^\s@]+$/,
-            message: 'Invalid email address',
-          },
-        }}
-        render={({ field }) => (
-          <div className='w-full'>
-            <input
-              {...field}
-              type='email'
-              placeholder='Email'
-              className={`w-full border-[0.1rem] border-solid p-2 ${
-                errors.email ? 'border-red-500' : 'border-black'
-              } rounded-md`}
-            />
-            {errors.email && <p className='text-sm mt-1 text-red-500'>{errors.email.message}</p>}
-          </div>
-        )}
-      />
-
-      <Controller
         name='username'
         control={control}
-        rules={{
-          required: 'Username is required',
-          minLength: {
-            value: 2,
-            message: 'Username must be at least 2 characters',
-          },
-        }}
         render={({ field }) => (
-          <div className='w-full'>
-            <input
-              {...field}
-              type='text'
-              placeholder='Username'
-              className={`w-full border-[0.1rem] border-solid p-2 ${
-                errors.username ? 'border-red-500' : 'border-black'
-              } rounded-md`}
-            />
-            {errors.username && <p className='text-sm mt-1 text-red-500'>{errors.username.message}</p>}
-          </div>
+          <Inputs
+            {...field}
+            register={register('username')}
+            type='text'
+            label='닉네임'
+            helpText={'10자 이내로 입력해주세요.'}
+            errors={errors}
+          />
         )}
       />
-
+      <Controller
+        name='email'
+        control={control}
+        render={({ field }) => (
+          <Inputs
+            {...field}
+            register={register('email')}
+            type='email'
+            label='이메일'
+            helpText={'이메일 helpText'}
+            errors={errors}
+          />
+        )}
+      />
       <Controller
         name='password'
         control={control}
-        rules={{
-          required: 'Password is required',
-          minLength: {
-            value: 8,
-            message: 'Password must be at least 8 characters',
-          },
-        }}
         render={({ field }) => (
-          <div className='w-full'>
-            <input
-              {...field}
-              type='password'
-              placeholder='Password'
-              className={`w-full border-[0.1rem] border-solid p-2 ${
-                errors.password ? 'border-red-500' : 'border-black'
-              } rounded-md`}
-            />
-            {errors.password && <p className='text-sm mt-1 text-red-500'>{errors.password.message}</p>}
-          </div>
+          <Inputs
+            {...field}
+            register={register('password')}
+            type='password'
+            label='비밀번호'
+            helpText={'영문 대, 소문자/숫자/특수문자 포함, 8~15자'}
+            errors={errors}
+          />
         )}
       />
 
