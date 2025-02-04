@@ -41,15 +41,12 @@ const SignUpForm = () => {
   const onSubmit = async (data: PostSignUpProps) => {
     console.log('Submitted Data', data);
     const isExistedEmail = await checkEmailAPI(data.email);
+    console.log('isExistedEmail', isExistedEmail);
     if (isExistedEmail) {
       setError('email', { type: 'manual', message: '이미 사용 중인 이메일입니다.' });
       return;
     }
 
-    if (data.password !== data.passwordConfirm) {
-      setError('passwordConfirm', { type: 'manual', message: '비밀번호가 틀립니다.' });
-      return;
-    }
     signUpMutation.mutate(data);
   };
 
@@ -65,9 +62,7 @@ const SignUpForm = () => {
       <Controller
         name='email'
         control={control}
-        render={({ field }) => (
-          <Inputs {...field} type='email' label='이메일' helpText={'이메일 helpText'} errors={errors} />
-        )}
+        render={({ field }) => <Inputs {...field} type='email' label='이메일' helpText={undefined} errors={errors} />}
       />
       <Controller
         name='password'
@@ -86,7 +81,7 @@ const SignUpForm = () => {
         name='passwordConfirm'
         control={control}
         render={({ field }) => (
-          <Inputs {...field} type='password' label='비밀번호' helpText={undefined} errors={errors} />
+          <Inputs {...field} type='password' label='비밀번호확인' helpText={undefined} errors={errors} />
         )}
       />
 
@@ -99,7 +94,7 @@ const SignUpForm = () => {
       </button>
 
       {signUpMutation.isError && (
-        <p className='text-sm text-red-500'>
+        <p>
           {signUpMutation.error instanceof Error ? signUpMutation.error.message : 'An error occurred during sign up'}
         </p>
       )}
