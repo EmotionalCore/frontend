@@ -10,7 +10,7 @@ import { InputProps } from './types';
 const inputBoxVariants = cva('', {
   variants: {
     layout: {
-      default: 'mx-auto mb-[6.8rem] h-[13.6rem] w-[58rem]',
+      default: 'mx-auto mb-[2rem] h-[13.6rem] w-[59rem]',
       checkbox: 'mx-auto flex w-[58rem] items-center',
       search: 'relative mx-auto flex w-[120.3rem] h-[8.2rem]',
     },
@@ -33,7 +33,7 @@ const inputTextVariants = cva(' font-SCDream5 border-[1px] rounded-[1rem]', {
   },
 });
 
-const inputSidetextVariants = cva('', {
+const inputSideTextVariants = cva('', {
   variants: {
     color: {
       default: 'text-black-0',
@@ -63,7 +63,7 @@ const inputSidetextVariants = cva('', {
     font: 'f200',
   },
 });
-const Inputs = ({ name, type, placeholder, helpText, className, label, register, errors, ...props }: InputProps) => {
+const Inputs = ({ name, type, helpText, label, errors, ...props }: InputProps) => {
   const [showPassword, setShowPassword] = useState(false);
   const passwordShowChange = () => {
     setShowPassword(!showPassword);
@@ -78,7 +78,7 @@ const Inputs = ({ name, type, placeholder, helpText, className, label, register,
     <>
       {(type == 'text' || type == 'email' || type == 'password') && (
         <div className={cn(inputBoxVariants())}>
-          <label htmlFor={name} className={cn(inputSidetextVariants({ position: 'left' }))}>
+          <label htmlFor={name} className={cn(inputSideTextVariants({ position: 'left' }))}>
             {label}
           </label>
           <div className='relative mt-[1.4rem]'>
@@ -86,7 +86,6 @@ const Inputs = ({ name, type, placeholder, helpText, className, label, register,
               id={name}
               type={passwordType()}
               className={errors[name] ? cn(inputTextVariants({ border: 'red' })) : cn(inputTextVariants())}
-              {...register}
               {...props}
             />
 
@@ -101,9 +100,9 @@ const Inputs = ({ name, type, placeholder, helpText, className, label, register,
               </button>
             )}
           </div>
-          <div className={cn(inputSidetextVariants({ color: 'help', margin: 'm14' }))}>{helpText}</div>
+          <div className={cn(inputSideTextVariants({ color: 'help', margin: 'm14' }))}>{helpText}</div>
           {errors[name]?.message && (
-            <span className={cn(inputSidetextVariants({ margin: 'm1', color: 'red' }))}>
+            <span className={cn(inputSideTextVariants({ margin: 'm1', color: 'red' }))}>
               {typeof errors[name].message == 'string' ? errors[name].message : ''}
             </span>
           )}
@@ -111,8 +110,8 @@ const Inputs = ({ name, type, placeholder, helpText, className, label, register,
       )}
       {type == 'checkbox' && (
         <div className={cn(inputBoxVariants({ layout: 'checkbox' }))}>
-          <input id={name} type={type} className={'size-[2.4rem] text-gray-6'} {...register} {...props} />
-          <label htmlFor={name} className={cn(inputSidetextVariants({ font: 'f500' }), 'items-center')}>
+          <input id={name} type={type} className={'size-[2.4rem] text-gray-6'} {...props} />
+          <label htmlFor={name} className={cn(inputSideTextVariants({ font: 'f500' }), 'items-center')}>
             {label}
           </label>
         </div>
@@ -124,7 +123,6 @@ const Inputs = ({ name, type, placeholder, helpText, className, label, register,
             type={type}
             placeholder='검색하세요.'
             className={cn(inputTextVariants({ border: 'search' }))}
-            {...register}
             {...props}
           />
           <button type='submit' title='Search' className='absolute right-[7rem] top-1/2 size-[4.4rem] -translate-y-1/2'>
@@ -137,7 +135,7 @@ const Inputs = ({ name, type, placeholder, helpText, className, label, register,
 };
 export default Inputs;
 
-//input 전체 사용 예시
+//input 사용 예시
 /*
 'use client';
 import React from 'react';
