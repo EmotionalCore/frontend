@@ -1,5 +1,7 @@
+import SignInForm from '@/app/components/domain/auth/SignInForm';
+
 const SignIn = () => {
-  return <div>로그인</div>;
+  return <SignInForm />;
 };
 
 export default SignIn;
