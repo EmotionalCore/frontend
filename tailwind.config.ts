@@ -16,6 +16,12 @@ const config: Config = {
     },
     fontSize: {
       // <p class="text-12-400 ...">The quick brown fox ...</p> 처럼 사용
+      '10-200': [
+        '1rem',
+        {
+          fontWeight: '200',
+        },
+      ],
       '10-400': [
         '1rem',
         {
@@ -280,9 +286,16 @@ const config: Config = {
           6: '#616161',
           B: '#BDBDBD',
           FA: '#FAFAFA',
+          5: '#575757',
         },
         red: {
           E: '#EF2B2A',
+        },
+        yellow: {
+          F: '#FFE711',
+        },
+        green: {
+          0: '#04C73C',
         },
       },
     },
