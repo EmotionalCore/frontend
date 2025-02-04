@@ -7,20 +7,22 @@ import { useMutation } from '@tanstack/react-query';
 import { PostSignUpProps } from '../../../../api/auth/type';
 import { postSignUpApi } from '../../../../api/auth';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { InputsValidation } from '../../../../validation/auth';
+import { InputsValidation } from '@/app/_lib/zod/InputsValidation';
+import { checkEmailAPI } from '@/app/_lib/axios/instance/instance';
 const SignUpForm = () => {
   const {
-    register,
     control,
     handleSubmit,
     formState: { errors, isValid },
     reset,
+    setError,
   } = useForm<PostSignUpProps>({
     resolver: zodResolver(InputsValidation),
     defaultValues: {
       email: '',
       username: '',
       password: '',
+      passwordConfirm: '',
     },
     mode: 'onChange',
   });
@@ -36,7 +38,18 @@ const SignUpForm = () => {
     },
   });
 
-  const onSubmit = (data: PostSignUpProps) => {
+  const onSubmit = async (data: PostSignUpProps) => {
+    console.log('Submitted Data', data);
+    const isExistedEmail = await checkEmailAPI(data.email);
+    if (isExistedEmail) {
+      setError('email', { type: 'manual', message: '이미 사용 중인 이메일입니다.' });
+      return;
+    }
+
+    if (data.password !== data.passwordConfirm) {
+      setError('passwordConfirm', { type: 'manual', message: '비밀번호가 틀립니다.' });
+      return;
+    }
     signUpMutation.mutate(data);
   };
 
@@ -46,28 +59,14 @@ const SignUpForm = () => {
         name='username'
         control={control}
         render={({ field }) => (
-          <Inputs
-            {...field}
-            register={register('username')}
-            type='text'
-            label='닉네임'
-            helpText={'10자 이내로 입력해주세요.'}
-            errors={errors}
-          />
+          <Inputs {...field} type='text' label='닉네임' helpText={'10자 이내로 입력해주세요.'} errors={errors} />
         )}
       />
       <Controller
         name='email'
         control={control}
         render={({ field }) => (
-          <Inputs
-            {...field}
-            register={register('email')}
-            type='email'
-            label='이메일'
-            helpText={'이메일 helpText'}
-            errors={errors}
-          />
+          <Inputs {...field} type='email' label='이메일' helpText={'이메일 helpText'} errors={errors} />
         )}
       />
       <Controller
@@ -76,12 +75,18 @@ const SignUpForm = () => {
         render={({ field }) => (
           <Inputs
             {...field}
-            register={register('password')}
             type='password'
             label='비밀번호'
             helpText={'영문 대, 소문자/숫자/특수문자 포함, 8~15자'}
             errors={errors}
           />
+        )}
+      />
+      <Controller
+        name='passwordConfirm'
+        control={control}
+        render={({ field }) => (
+          <Inputs {...field} type='password' label='비밀번호' helpText={undefined} errors={errors} />
         )}
       />
 
