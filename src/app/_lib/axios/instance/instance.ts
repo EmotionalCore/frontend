@@ -94,8 +94,4 @@ export async function apiRequest<T, U>(
   }
 }
 
-// 중복 이메일 체크
-export function checkEmailAPI(email: string) {
-  return axios.get<boolean>(`/api/auth/check-email?email=${email}`);
-}
 export default instance;

@@ -5,17 +5,18 @@ import Inputs from '@/app/_components/_common/Inputs/Inputs';
 import { useForm, Controller } from 'react-hook-form';
 import { useMutation } from '@tanstack/react-query';
 import { PostSignUpProps } from '../../../../api/auth/type';
-import { postSignUpApi } from '../../../../api/auth';
+import { checkEmailApi, postSignUpApi } from '../../../../api/auth';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { InputsValidation } from '@/app/_lib/zod/InputsValidation';
-import { checkEmailAPI } from '@/app/_lib/axios/instance/instance';
+import { useRouter } from 'next/navigation';
+
 const SignUpForm = () => {
+  const router = useRouter();
   const {
     control,
     handleSubmit,
     formState: { errors, isValid },
     reset,
-    setError,
   } = useForm<PostSignUpProps>({
     resolver: zodResolver(InputsValidation),
     defaultValues: {
@@ -32,21 +33,30 @@ const SignUpForm = () => {
     onSuccess: () => {
       console.log('Sign up successful');
       reset();
+      router.replace('/signin');
     },
     onError: (error) => {
       console.error('Sign up failed', error);
     },
   });
 
+  // const onSubmit = async (data: PostSignUpProps) => {
+  //   console.log('Submitted Data', data);
+  //   try {
+  //     const isExistedEmail = await checkEmailApi(data.email);
+  //     console.log('isExistedEmail', isExistedEmail);
+  //     if (isExistedEmail) {
+  //       setError('email', { type: 'manual', message: '이미 사용 중인 이메일입니다.' });
+  //       return;
+  //     }
+  //     signUpMutation.mutate(data);
+  //   } catch (error) {
+  //     console.error('오류 발생', error);
+  //   }
+  // };
+
   const onSubmit = async (data: PostSignUpProps) => {
     console.log('Submitted Data', data);
-    const isExistedEmail = await checkEmailAPI(data.email);
-    console.log('isExistedEmail', isExistedEmail);
-    if (isExistedEmail) {
-      setError('email', { type: 'manual', message: '이미 사용 중인 이메일입니다.' });
-      return;
-    }
-
     signUpMutation.mutate(data);
   };
 

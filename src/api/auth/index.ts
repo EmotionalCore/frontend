@@ -7,3 +7,12 @@ export const postSignUpApi = (data: PostSignUpProps): Promise<PostSignUpProps> =
 
 export const postSignInApi = (data: PostSignInProps): Promise<PostSignInProps> =>
   apiRequest('post', signAddress.signIn, data);
+
+// 중복 이메일 체크
+export async function checkEmailApi(email: string) {
+  const response = await apiRequest<{ exists: boolean }, { email: string }>('post', '/api/member/check/email', {
+    email,
+  });
+  console.log('API response', response);
+  return response.exists;
+}
