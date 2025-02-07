@@ -4,7 +4,7 @@ import Link from 'next/link';
 import { WorkSectionProps } from './type';
 import Cards from '@/app/components/_common/Cards/Cards';
 import { WorkData } from '@/app/api/works/type';
-import Loading from '@/app/components/_common/Loading/loading';
+import Loading from '@/app/components/_common/Loading/Loading';
 
 export const sectionStyles = cva('mt-[9.16rem] flex w-[120rem]  flex-col', {
   variants: {
