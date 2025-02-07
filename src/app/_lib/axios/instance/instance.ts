@@ -11,6 +11,7 @@ export const BASE_URL = process.env.NEXT_APP_PUBLIC_BASE_URL || 'https://emotion
 
 export const instance = axios.create({
   baseURL: BASE_URL,
+  withCredentials: true,
   headers: {
     'Content-Type': 'application/json',
   },
