@@ -7,7 +7,9 @@ import { zodResolver } from '@hookform/resolvers/zod';
 import { InputsValidation } from '@/app/lib/zod/InputsValidation';
 import { useMutation } from '@tanstack/react-query';
 import { postSignInApi } from '@/app/api/auth';
+import { useRouter } from 'next/navigation';
 const SignInForm = () => {
+  const router = useRouter();
   const {
     control,
     handleSubmit,
@@ -23,11 +25,26 @@ const SignInForm = () => {
     mode: 'onChange',
   });
 
+  //before : Signup code 복붙
+  // const signInMutation = useMutation({
+  //   mutationFn: (signinData: PostSignInProps) => postSignInApi(signinData),
+  //   onSuccess: () => {
+  //     console.log('Sign in successful');
+  //     reset();
+  //     router.replace('/');
+  //   },
+  //   onError: (error) => {
+  //     console.error('Sign in failed', error);
+  //   },
+  // });
   const signInMutation = useMutation({
     mutationFn: (signinData: PostSignInProps) => postSignInApi(signinData),
-    onSuccess: () => {
+    onSuccess: (response) => {
+      localStorage.setItem('accessToken', response.accessToken);
+      localStorage.setItem('refreshToken', response.refreshToken);
       console.log('Sign in successful');
       reset();
+      router.replace('/');
     },
     onError: (error) => {
       console.error('Sign in failed', error);
@@ -35,6 +52,7 @@ const SignInForm = () => {
   });
 
   const onSubmit = async (data: PostSignInProps) => {
+    console.log('Form submitted');
     console.log('Submitted Data', data);
     signInMutation.mutate(data);
   };
