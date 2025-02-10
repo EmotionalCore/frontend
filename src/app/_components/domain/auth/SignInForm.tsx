@@ -1,13 +1,14 @@
 'use client';
 import React from 'react';
 import Inputs from '@/app/components/_common/Inputs/Inputs';
-import { Controller, useForm } from 'react-hook-form';
-import { PostSignInProps } from '@/app/api/auth/type';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { InputsValidation } from '@/app/lib/zod/InputsValidation';
+import { useForm, Controller } from 'react-hook-form';
 import { useMutation } from '@tanstack/react-query';
-import { postSignInApi } from '@/app/api/auth';
+import { PostSignInProps } from '../../../api/auth/type';
+import { postSignInApi } from '../../../api/auth';
+import { zodResolver } from '@hookform/resolvers/zod';
+import { InputsSignInValidation } from '@/app/lib/zod/InputsValidation';
 import { useRouter } from 'next/navigation';
+
 const SignInForm = () => {
   const router = useRouter();
   const {
@@ -15,9 +16,8 @@ const SignInForm = () => {
     handleSubmit,
     formState: { errors, isValid },
     reset,
-    setError,
   } = useForm<PostSignInProps>({
-    resolver: zodResolver(InputsValidation),
+    resolver: zodResolver(InputsSignInValidation),
     defaultValues: {
       email: '',
       password: '',
@@ -25,23 +25,9 @@ const SignInForm = () => {
     mode: 'onChange',
   });
 
-  //before : Signup code 복붙
-  // const signInMutation = useMutation({
-  //   mutationFn: (signinData: PostSignInProps) => postSignInApi(signinData),
-  //   onSuccess: () => {
-  //     console.log('Sign in successful');
-  //     reset();
-  //     router.replace('/');
-  //   },
-  //   onError: (error) => {
-  //     console.error('Sign in failed', error);
-  //   },
-  // });
   const signInMutation = useMutation({
     mutationFn: (signinData: PostSignInProps) => postSignInApi(signinData),
-    onSuccess: (response) => {
-      localStorage.setItem('accessToken', response.accessToken);
-      localStorage.setItem('refreshToken', response.refreshToken);
+    onSuccess: () => {
       console.log('Sign in successful');
       reset();
       router.replace('/');
@@ -52,10 +38,10 @@ const SignInForm = () => {
   });
 
   const onSubmit = async (data: PostSignInProps) => {
-    console.log('Form submitted');
     console.log('Submitted Data', data);
     signInMutation.mutate(data);
   };
+
   return (
     <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col items-center justify-center gap-4 rounded-md p-6'>
       <Controller
@@ -67,7 +53,13 @@ const SignInForm = () => {
         name='password'
         control={control}
         render={({ field }) => (
-          <Inputs {...field} type='password' label='비밀번호' helpText={undefined} errors={errors} />
+          <Inputs
+            {...field}
+            type='password'
+            label='비밀번호'
+            helpText={'영문 대, 소문자/숫자/특수문자 포함, 8~15자'}
+            errors={errors}
+          />
         )}
       />
       <button
@@ -75,15 +67,16 @@ const SignInForm = () => {
         disabled={!isValid || signInMutation.isPending}
         className='border-black w-full rounded-lg border-[0.1rem] border-solid p-2 transition-colors hover:bg-gray-100 disabled:cursor-not-allowed disabled:opacity-50'
       >
-        {signInMutation.isPending ? 'Signing In...' : 'Sign In'}
+        {signInMutation.isPending ? 'Signing Up...' : 'Sign Up'}
       </button>
 
       {signInMutation.isError && (
         <p>
-          {signInMutation.error instanceof Error ? signInMutation.error.message : 'An error occurred during sign in'}
+          {signInMutation.error instanceof Error ? signInMutation.error.message : 'An error occurred during sign up'}
         </p>
       )}
     </form>
   );
 };
+
 export default SignInForm;
