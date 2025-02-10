@@ -3,7 +3,7 @@ import React from 'react';
 import Inputs from '@/app/components/_common/Inputs/Inputs';
 import { useForm, Controller } from 'react-hook-form';
 import { useMutation } from '@tanstack/react-query';
-import { PostSignInProps } from '../../../api/auth/type';
+import { JwtResponse, PostSignInProps } from '../../../api/auth/type';
 import { postSignInApi } from '../../../api/auth';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { InputsSignInValidation } from '@/app/lib/zod/InputsValidation';
@@ -25,10 +25,11 @@ const SignInForm = () => {
     mode: 'onChange',
   });
 
-  const signInMutation = useMutation({
+  const signInMutation = useMutation<JwtResponse, Error, PostSignInProps>({
     mutationFn: (signinData: PostSignInProps) => postSignInApi(signinData),
-    onSuccess: () => {
+    onSuccess: (data) => {
       console.log('Sign in successful');
+      localStorage.setItem('accessToken', data.accessToken);
       reset();
       router.replace('/');
     },
