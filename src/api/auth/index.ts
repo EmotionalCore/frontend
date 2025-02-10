@@ -1,5 +1,5 @@
 import { apiRequest } from '@/app/_lib/axios/instance/instance';
-import { JwtResponse, PostSignInProps, PostSignUpProps } from './type';
+import { PostSignInProps, PostSignUpProps, JwtResponse } from './type';
 import { signAddress } from '../address';
 
 export const postSignUpApi = (data: PostSignUpProps): Promise<PostSignUpProps> =>
