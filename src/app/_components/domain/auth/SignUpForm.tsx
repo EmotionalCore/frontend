@@ -7,7 +7,7 @@ import { useMutation } from '@tanstack/react-query';
 import { PostSignUpProps } from '../../../../api/auth/type';
 import { checkEmailApi, postSignUpApi } from '../../../../api/auth';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { InputsValidation } from '@/app/_lib/zod/InputsValidation';
+import { InputsSignUpValidation } from '@/app/_lib/zod/InputsValidation';
 import { useRouter } from 'next/navigation';
 
 const SignUpForm = () => {
@@ -18,7 +18,7 @@ const SignUpForm = () => {
     formState: { errors, isValid },
     reset,
   } = useForm<PostSignUpProps>({
-    resolver: zodResolver(InputsValidation),
+    resolver: zodResolver(InputsSignUpValidation),
     defaultValues: {
       email: '',
       username: '',
