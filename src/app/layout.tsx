@@ -1,9 +1,9 @@
 import type { Metadata } from 'next';
 import localFont from 'next/font/local';
 import './globals.css';
-import Providers from './lib/react-query/providers';
-import Headers from './components/_common/Headers';
-import Footer from './components/_common/Footer';
+import Providers from './_lib/react-query/providers';
+import Headers from './_components/_common/Headers';
+import Footer from './_components/_common/Footer';
 
 const SCDream1 = localFont({
   src: './fonts/SCDream1.otf',
