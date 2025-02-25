@@ -55,6 +55,12 @@ const config: Config = {
       ],
 
       //fontsize: 14px
+      '14-200': [
+        '1.4rem',
+        {
+          fontWeight: '200',
+        },
+      ],
       '14-400': [
         '1.4rem',
         {
@@ -69,6 +75,12 @@ const config: Config = {
       ],
 
       //fontsize: 16px
+      '16-200': [
+        '1.6rem',
+        {
+          fontWeight: '200',
+        },
+      ],
       '16-400': [
         '1.6rem',
         {
@@ -154,6 +166,12 @@ const config: Config = {
         '2.4rem',
         {
           fontWeight: '500',
+        },
+      ],
+      '24-600': [
+        '2.4rem',
+        {
+          fontWeight: '600',
         },
       ],
       '24-700': [
