@@ -63,7 +63,7 @@ export const CardItem = ({ data, variant, id }: CardItemProps) => {
       href={`board/works/detail/${data.id}`}
       className={cn(cardContainerVariants({ layout: isHorizontalLayout ? 'horizontal' : 'vertical' }), 'w-[38.7rem]')}
     >
-      <div className={cn(isHorizontalLayout ? 'flex gap-[3rem]' : 'block')}>
+      <div className={cn(isHorizontalLayout ? 'flex gap-[3rem] p-[2rem]' : 'block')}>
         {isMonthly ? (
           // 이달의 인기 작품 & 우수 작가
           <div className='relative w-full'>
