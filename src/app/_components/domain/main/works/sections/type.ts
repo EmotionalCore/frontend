@@ -1,7 +1,7 @@
 import { VariantProps } from 'class-variance-authority';
 import { sectionStyles } from './WorkSection';
 import { WorkData } from '@/api/works/type';
-import { CardVariant } from '@/app/_components/_common/Cards/type';
+import { CardVariant } from './carousel/navButton/type';
 
 export interface WorkSectionProps extends VariantProps<typeof sectionStyles> {
   title: string;

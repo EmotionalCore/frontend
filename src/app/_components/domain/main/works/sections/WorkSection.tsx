@@ -2,11 +2,12 @@ import { cva } from 'class-variance-authority';
 import { useQuery } from '@tanstack/react-query';
 import Link from 'next/link';
 import { WorkSectionProps } from './type';
-import Cards from '@/app/_components/_common/Cards/Cards';
+
 import { WorkData } from '@/api/works/type';
 import Loading from '@/app/_components/_common/Loading/Loading';
+import Cards from './carousel/navButton/Cards';
 
-export const sectionStyles = cva('mt-[9.16rem] flex w-[120rem]  flex-col', {
+export const sectionStyles = cva('mt-[9.16rem] flex w-[120rem]   flex-col', {
   variants: {
     hasMoreLink: {
       true: '',
