@@ -1,3 +1,6 @@
 {
-  "cSpell.words": ["pretendard"]
+  "cSpell.words": ["pretendard"],
+  "tailwindCSS.experimental.classRegex": [
+    ["cva\\(([^)]*)\\)", "[\"'`]([^\"'`]*).*?[\"'`]"]
+  ]
 }
