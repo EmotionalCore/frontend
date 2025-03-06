@@ -1,12 +1,12 @@
 'use client';
 import React from 'react';
-import Inputs from '@/app/components/_common/Inputs/Inputs';
+import Inputs from '@/app/_components/_common/Inputs/Inputs';
 import { useForm, Controller } from 'react-hook-form';
 import { useMutation } from '@tanstack/react-query';
-import { JwtResponse, PostSignInProps } from '../../../api/auth/type';
-import { postSignInApi } from '../../../api/auth';
+import { JwtResponse, PostSignInProps } from '../../../../api/auth/type';
+import { postSignInApi } from '../../../../api/auth';
 import { zodResolver } from '@hookform/resolvers/zod';
-import { InputsSignInValidation } from '@/app/lib/zod/InputsValidation';
+import { InputsSignInValidation } from '@/app/_lib/zod/InputsValidation';
 import { useRouter } from 'next/navigation';
 
 const SignInForm = () => {
