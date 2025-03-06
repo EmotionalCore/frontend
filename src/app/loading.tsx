@@ -1,5 +1,5 @@
 import React from 'react';
-import { LoadingProps } from './type';
+import { LoadingProps } from './_components/_common/Loading/type';
 
 const Loading = ({ type }: LoadingProps) => {
   return type === 'skeleton' ? (
