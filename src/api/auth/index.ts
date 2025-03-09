@@ -10,9 +10,14 @@ export const postSignInApi = (data: PostSignInProps): Promise<JwtResponse> =>
 
 // 중복 이메일 체크
 export async function checkEmailApi(email: string) {
-  const response = await apiRequest<{ exists: boolean }, { email: string }>('post', '/api/member/check/email', {
-    email,
-  });
+  const response = await apiRequest<{ exists: boolean }, { email: string }>(
+    'get',
+    '/api/member/check/email',
+    undefined,
+    {
+      email,
+    }
+  );
   console.log('API response', response);
   return response.exists;
 }

@@ -19,6 +19,7 @@ const SignUpForm = () => {
     handleSubmit,
     formState: { errors, isValid },
     reset,
+    setError,
   } = useForm<PostSignUpProps>({
     resolver: zodResolver(InputsSignUpValidation),
     defaultValues: {
@@ -42,24 +43,19 @@ const SignUpForm = () => {
     },
   });
 
-  // const onSubmit = async (data: PostSignUpProps) => {
-  //   console.log('Submitted Data', data);
-  //   try {
-  //     const isExistedEmail = await checkEmailApi(data.email);
-  //     console.log('isExistedEmail', isExistedEmail);
-  //     if (isExistedEmail) {
-  //       setError('email', { type: 'manual', message: '이미 사용 중인 이메일입니다.' });
-  //       return;
-  //     }
-  //     signUpMutation.mutate(data);
-  //   } catch (error) {
-  //     console.error('오류 발생', error);
-  //   }
-  // };
-
   const onSubmit = async (data: PostSignUpProps) => {
     console.log('Submitted Data', data);
-    signUpMutation.mutate(data);
+    try {
+      const isExistedEmail = await checkEmailApi(data.email);
+      console.log('isExistedEmail', isExistedEmail);
+      if (isExistedEmail) {
+        setError('email', { type: 'manual', message: '이미 사용 중인 이메일입니다.' });
+        return;
+      }
+      signUpMutation.mutate(data);
+    } catch (error) {
+      console.error('오류 발생', error);
+    }
   };
 
   return (
