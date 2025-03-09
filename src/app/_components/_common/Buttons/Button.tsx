@@ -23,7 +23,7 @@ export const ButtonVariants = cva('rounded-[0.625rem] hover:brightness-90 active
       md: 'flex w-[59rem] h-[6.2rem] px-[0.7rem] justify-center items-center text-[1.6rem] font-SCDream2',
       lg: 'flex w-[73.3rem] h-[7.1rem] px-[0.7rem] py-[1rem] justify-center items-center gap-2.5 text-[2.4rem] font-SCDream5',
       mdLogIn:
-        'inline-flex w-[59rem] h-[6.2rem] px-[0.7rem] py-[1rem] items-center gap-1.25 text-[1.6rem] font-SCDream2',
+        'justify-center inline-flex w-[59rem] h-[6.2rem] px-[0.7rem] py-[1rem] items-center gap-1.25 text-[1.6rem] font-SCDream2',
     },
   },
   defaultVariants: {
@@ -32,9 +32,9 @@ export const ButtonVariants = cva('rounded-[0.625rem] hover:brightness-90 active
   },
 });
 
-const Buttons = ({ intent, size, children, ...props }: ButtonsProps) => {
+const Buttons = ({ intent, size, children, className, ...props }: ButtonsProps) => {
   return (
-    <button className={cn(ButtonVariants({ intent, size }))} {...props}>
+    <button className={cn(ButtonVariants({ intent, size }), className)} {...props}>
       {children}
     </button>
   );
