@@ -11,7 +11,7 @@ const inputBoxVariants = cva('', {
   variants: {
     layout: {
       default: 'mx-auto mb-[2rem] h-[13.6rem] w-[59rem]',
-      checkbox: 'mx-auto flex w-[58rem] items-center',
+      checkbox: 'mx-auto flex w-[59rem] items-center',
       search: 'relative mx-auto flex w-[120.3rem] h-[8.2rem]',
     },
   },
@@ -23,8 +23,8 @@ const inputBoxVariants = cva('', {
 const inputTextVariants = cva(' font-SCDream5 border-[1px] rounded-[1rem]', {
   variants: {
     border: {
-      default: 'w-[58rem] h-[6.2rem] text-gray-6 p-[1rem] text-[1.6rem] border-gray-B',
-      red: 'w-[58rem] h-[6.2rem] text-gray-6 p-[1rem] text-[1.6rem] border-red-E',
+      default: 'w-[59rem] h-[6.2rem] text-gray-6 p-[1rem] text-[1.6rem] border-gray-B',
+      red: 'w-[59rem] h-[6.2rem] text-gray-6 p-[1rem] text-[1.6rem] border-red-E',
       search: 'placeholder-gray-B w-[115.2rem] text-[2.4rem] text-black-2 py-[1.9rem] pl-[2.1rem] border-black-2',
     },
   },

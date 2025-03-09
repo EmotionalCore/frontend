@@ -3,9 +3,13 @@ const passwordPattern = new RegExp(/^(?=.*?[A-Za-z])(?=.*?[0-9])(?=.*?[#?!@$%^&*
 
 export const InputsSignUpValidation = z
   .object({
-    username: z.string().min(1, { message: '닉네임을 입력해주세요.' }).max(10),
+    username: z.string().min(1, { message: '닉네임을 입력해주세요.' }).max(10, { message: '' }),
     email: z.string().toLowerCase().email({ message: '이메일을 입력해주세요.' }),
-    password: z.string().min(8, { message: '비밀번호를 입력해주세요.' }).max(15).regex(passwordPattern),
+    password: z
+      .string()
+      .min(8, { message: '비밀번호를 입력해주세요.' })
+      .max(15, { message: '' })
+      .regex(passwordPattern, { message: '' }),
     passwordConfirm: z.string(),
   })
   .refine((value) => value.password == value.passwordConfirm, {
@@ -14,5 +18,9 @@ export const InputsSignUpValidation = z
   });
 export const InputsSignInValidation = z.object({
   email: z.string().toLowerCase().email({ message: '이메일을 입력해주세요.' }),
-  password: z.string().min(8, { message: '비밀번호를 입력해주세요.' }).max(15).regex(passwordPattern),
+  password: z
+    .string()
+    .min(8, { message: '비밀번호를 입력해주세요.' })
+    .max(15, { message: '' })
+    .regex(passwordPattern, { message: '' }),
 });
