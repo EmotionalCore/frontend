@@ -15,3 +15,5 @@ export const getPopularWorksApi = (): Promise<WorkData[]> => apiRequest('get', w
 export const getBestAuthorApi = (): Promise<WorkData[]> => apiRequest('get', worksAddress.authorBest);
 
 export const getNewAuthorApi = (): Promise<WorkData[]> => apiRequest('get', worksAddress.new.author);
+
+export const getNewWorkApi = (): Promise<WorkData[]> => apiRequest('get', worksAddress.new.default);
