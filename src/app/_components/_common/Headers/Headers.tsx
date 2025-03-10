@@ -12,6 +12,28 @@ interface HeadersProps {
   isSearchPage: boolean;
   isLibraryPage: boolean;
 }
+interface LinksProps {
+  href: string;
+  label: string;
+  isActive: boolean;
+  marginLeft: keyof typeof marginOption;
+}
+
+const marginOption = {
+  '4.9': 'ml-[4.9rem] md:ml-[3rem]',
+  '3.8': 'ml-[3.8rem] md:ml-[3rem]',
+};
+
+const Links = ({ href, label, isActive, marginLeft }: LinksProps) => {
+  return (
+    <div className={`${marginOption[marginLeft] || ''} ${isActive ? 'text-black-2' : 'text-gray-9'}`}>
+      <Link href={href} passHref>
+        {label}
+      </Link>
+    </div>
+  );
+};
+
 const Headers = ({ isMainPage, isBoardPage, isSearchPage, isLibraryPage }: HeadersProps) => {
   return (
     <header className='m-auto flex h-[6.3rem] flex-row items-center justify-between bg-white-F font-SCDream5 text-[1.8rem] text-black-2 sm:h-[9.6rem] sm:w-[37.3rem] sm:flex-col md:w-[74.4rem] lg:w-[120rem]'>
@@ -23,41 +45,23 @@ const Headers = ({ isMainPage, isBoardPage, isSearchPage, isLibraryPage }: Heade
         <div className='relative h-[2.2272rem] w-[8.7453rem] sm:hidden'>
           <Image src={TitleImage} alt='title' fill style={{ objectFit: 'contain' }} />
         </div>
-        <div className={`ml-[4.9rem] ${isMainPage ? 'text-black-2' : 'text-gray-9'}`}>
-          <Link href='/' passHref>
-            홈
-          </Link>
-        </div>
-        <div className={`ml-[3.8rem] ${isBoardPage ? 'text-black-2' : 'text-gray-9'}`}>
-          <Link href='/board' passHref>
-            게시판
-          </Link>
-        </div>
-        <div className={`ml-[3.8rem] ${isSearchPage ? 'text-black-2' : 'text-gray-9'}`}>
-          <Link href='/search' passHref>
-            검색
-          </Link>
-        </div>
-        <div className={`ml-[3.8rem] ${isLibraryPage ? 'text-black-2' : 'text-gray-9'}`}>
-          <Link href='/library' passHref>
-            서재
-          </Link>
-        </div>
+        <Links href='/' marginLeft='4.9' label='홈' isActive={isMainPage} />
+        <Links href='/board' marginLeft='3.8' label='게시판' isActive={isBoardPage} />
+        <Links href='/search' marginLeft='3.8' label='검색' isActive={isSearchPage} />
+        <Links href='/library' marginLeft='3.8' label='서재' isActive={isLibraryPage} />
       </div>
       {/* desktop/tablet 작품등록 프로필 */}
       <div className='flex-low flex sm:flex-col'>
-        <div>
-          <Link href='/forum/post' passHref>
-            <div className='flex items-center'>
-              <div className='relative size-[2.4rem]'>
-                <Image src={AddIcon} alt='add icon' fill style={{ objectFit: 'contain' }} />
-              </div>
-              <div className='ml-[0.6rem] text-[2rem] text-blue-0'>작품등록</div>
+        <Link href='/forum/post' passHref>
+          <div className='flex items-center'>
+            <div className='relative size-[2.4rem]'>
+              <Image src={AddIcon} alt='add icon' fill style={{ objectFit: 'contain' }} />
             </div>
-          </Link>
-        </div>
-        <div className='ml-[3.95rem]'>
-          <Link href='/mypage' passHref>
+            <div className='ml-[0.6rem] text-[2rem] text-blue-0'>작품등록</div>
+          </div>
+        </Link>
+        <div className='ml-[4.25rem] md:ml-[3.3rem]'>
+          <Link href='/signup' passHref>
             <div className='relative flex size-[3.6rem] items-center' title='none_user'>
               <Image src={NoneUserIcon} alt='none user icon' fill style={{ objectFit: 'contain' }} />
             </div>
