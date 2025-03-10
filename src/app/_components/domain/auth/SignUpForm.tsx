@@ -5,7 +5,7 @@ import Inputs from '@/app/_components/_common/Inputs/Inputs';
 import { useForm, Controller } from 'react-hook-form';
 import { useMutation } from '@tanstack/react-query';
 import { PostSignUpProps } from '@/api/auth/type';
-import { checkEmailApi, postSignUpApi } from '@/api/auth';
+import { checkEmailApi, checkUsernameApi, postSignUpApi } from '@/api/auth';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { InputsSignUpValidation } from '@/app/_lib/zod/InputsValidation';
 import { useRouter } from 'next/navigation';
@@ -46,13 +46,19 @@ const SignUpForm = () => {
   const onSubmit = async (data: PostSignUpProps) => {
     console.log('Submitted Data', data);
     try {
+      const isExistedUsername = await checkUsernameApi(data.username);
       const isExistedEmail = await checkEmailApi(data.email);
-      console.log('isExistedEmail', isExistedEmail);
+      console.log('isExistedUsername :', isExistedUsername);
+      console.log('isExistedEmail :', isExistedEmail);
+      if (isExistedUsername) {
+        setError('username', { type: 'manual', message: '중복되지 않은 닉네임으로 변경해주세요.' });
+      }
       if (isExistedEmail) {
         setError('email', { type: 'manual', message: '이미 사용 중인 이메일입니다.' });
-        return;
       }
-      signUpMutation.mutate(data);
+      if (!isExistedEmail && !isExistedUsername) {
+        signUpMutation.mutate(data);
+      }
     } catch (error) {
       console.error('오류 발생', error);
     }
@@ -63,7 +69,7 @@ const SignUpForm = () => {
       <div className='mt-[3rem] font-SCDream5 text-[2.8rem]'>회원가입</div>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className='flex flex-col items-center justify-center gap-4 rounded-md p-6'
+        className='mb-[3rem] flex flex-col items-center justify-center gap-4 rounded-md p-6'
       >
         <Controller
           name='username'
