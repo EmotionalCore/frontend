@@ -8,11 +8,9 @@ const config: Config = {
   ],
   theme: {
     screens: {
-      // => @media (max-width: 1119px) { ... }
-      md: { max: '1480px' }, // tablet
-
-      // => @media (max-width: 743px) { ... }
-      sm: { max: '768px' }, // mobile
+      sm: { max: '959px' }, // mobile
+      md: { min: '960px', max: '1919px' }, // tablet
+      lg: { min: '1920px' }, // desktop
     },
     fontSize: {
       // <p class="text-12-400 ...">The quick brown fox ...</p> 처럼 사용
