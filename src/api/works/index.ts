@@ -28,3 +28,5 @@ export const postWorkEpisodeApi = (): Promise<PostWorkEpisodeProps> => apiReques
 export const getWorkEpisodeApi = () => apiRequest('get', worksAddress.episode);
 export const updateWorkEpisodeApi = () => apiRequest('put', worksAddress.episode);
 export const deleteWorkEpisodeApi = () => apiRequest('delete', worksAddress.episode);
+
+export const getNewWorkApi = (): Promise<WorkData[]> => apiRequest('get', worksAddress.new.default);

@@ -1,9 +1,13 @@
 /** @type {import('next').NextConfig} */
 const nextConfig = {
-  reactStrictMode: true,
-  images: {
-    domains: ["emotioncores.com","emotioncores.comstring"],
-  },
+    images: {
+        remotePatterns: [
+            {
+                protocol: 'https',
+                hostname: 'emotioncores.com',
+            },
+        ],
+    },
 };
 
 export default nextConfig;
