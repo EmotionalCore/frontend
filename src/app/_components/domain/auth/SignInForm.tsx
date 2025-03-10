@@ -49,7 +49,7 @@ const SignInForm = () => {
       <div className='mt-[3rem] font-SCDream5 text-[2.8rem]'>로그인</div>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className='flex flex-col items-center justify-center gap-4 rounded-md p-6'
+        className='mb-[3rem] flex flex-col items-center justify-center gap-4 rounded-md p-6'
       >
         <Controller
           name='email'

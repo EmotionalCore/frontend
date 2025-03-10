@@ -21,3 +21,16 @@ export async function checkEmailApi(email: string) {
   console.log('API response', response);
   return response.exists;
 }
+// 중복 닉네임 체크
+export async function checkUsernameApi(username: string) {
+  const response = await apiRequest<{ exists: boolean }, { username: string }>(
+    'get',
+    '/api/member/check/username',
+    undefined,
+    {
+      username,
+    }
+  );
+  console.log('API response', response);
+  return response.exists;
+}
