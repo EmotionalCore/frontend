@@ -7,10 +7,10 @@ import LogoImage from '/public/image/logo.svg';
 import TitleImage from '/public/image/title.svg';
 
 interface HeadersProps {
-  isMainPage: boolean;
-  isBoardPage: boolean;
-  isSearchPage: boolean;
-  isLibraryPage: boolean;
+  hasMainPage: boolean;
+  hasBoardPage: boolean;
+  hasSearchPage: boolean;
+  hasLibraryPage: boolean;
 }
 interface LinksProps {
   href: string;
@@ -64,17 +64,17 @@ const linksData = {
   signup: '/signup',
 };
 
-const Headers = ({ isMainPage, isBoardPage, isSearchPage, isLibraryPage }: HeadersProps) => {
+const Headers = ({ hasMainPage, hasBoardPage, hasSearchPage, hasLibraryPage }: HeadersProps) => {
   return (
     <header className='m-auto flex h-[6.3rem] flex-row items-center justify-between bg-white-F font-SCDream5 text-[1.8rem] text-black-2 sm:h-[9.6rem] sm:w-[37.3rem] sm:flex-col md:w-[74.4rem] lg:w-[120rem]'>
       {/* desktop/tablet 감성코어 홈 게시판 검색 서재 */}
       <div className='flex-low flex items-center sm:flex-col'>
         <ImageButton src={LogoImage} alt='logo' style='logo' />
         <ImageButton src={TitleImage} alt='title' style='title' />
-        <Links href={linksData.home} marginLeft='4.9' label='홈' isActive={isMainPage} />
-        <Links href={linksData.board} marginLeft='3.8' label='게시판' isActive={isBoardPage} />
-        <Links href={linksData.search} marginLeft='3.8' label='검색' isActive={isSearchPage} />
-        <Links href={linksData.library} marginLeft='3.8' label='서재' isActive={isLibraryPage} />
+        <Links href={linksData.home} marginLeft='4.9' label='홈' isActive={hasMainPage} />
+        <Links href={linksData.board} marginLeft='3.8' label='게시판' isActive={hasBoardPage} />
+        <Links href={linksData.search} marginLeft='3.8' label='검색' isActive={hasSearchPage} />
+        <Links href={linksData.library} marginLeft='3.8' label='서재' isActive={hasLibraryPage} />
       </div>
       {/* desktop/tablet 작품등록 프로필 */}
       <div className='flex-low flex sm:flex-col'>
