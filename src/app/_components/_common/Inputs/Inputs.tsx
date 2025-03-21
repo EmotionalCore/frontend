@@ -85,7 +85,7 @@ const Inputs = ({ name, type, helpText, label, errors, ...props }: InputProps) =
             <input
               id={name}
               type={passwordType()}
-              className={errors[name] ? cn(inputTextVariants({ border: 'red' })) : cn(inputTextVariants())}
+              className={errors && errors[name] ? cn(inputTextVariants({ border: 'red' })) : cn(inputTextVariants())}
               {...props}
             />
 
@@ -101,7 +101,7 @@ const Inputs = ({ name, type, helpText, label, errors, ...props }: InputProps) =
             )}
           </div>
           <div className={cn(inputSideTextVariants({ color: 'help', margin: 'm14' }))}>{helpText}</div>
-          {errors[name]?.message && (
+          {errors && errors[name]?.message && (
             <span className={cn(inputSideTextVariants({ margin: 'm1', color: 'red' }))}>
               {typeof errors[name].message == 'string' ? errors[name].message : ''}
             </span>
@@ -111,7 +111,7 @@ const Inputs = ({ name, type, helpText, label, errors, ...props }: InputProps) =
       {type == 'checkbox' && (
         <div className={cn(inputBoxVariants({ layout: 'checkbox' }))}>
           <input id={name} type={type} className={'size-[2.4rem] text-gray-6'} {...props} />
-          <label htmlFor={name} className={cn(inputSideTextVariants({ font: 'f500' }), 'items-center')}>
+          <label htmlFor={name} className={cn(inputSideTextVariants({ font: 'f500' }), 'ml-[1.1rem] items-center')}>
             {label}
           </label>
         </div>

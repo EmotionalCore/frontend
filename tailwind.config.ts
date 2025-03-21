@@ -321,6 +321,7 @@ const config: Config = {
           EE: '#EEE',
           9: '#9E9E9E',
           F: '#F5F5F5',
+          F4: '#F4F4F4',
           6: '#616161',
           B: '#BDBDBD',
           FA: '#FAFAFA',
