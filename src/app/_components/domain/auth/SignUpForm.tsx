@@ -66,10 +66,10 @@ const SignUpForm = () => {
 
   return (
     <>
-      <div className='mt-[3rem] font-SCDream5 text-[2.8rem]'>회원가입</div>
+      <div className='mt-[8.86rem] font-SCDream5 text-[2.8rem]'>회원가입</div>
       <form
         onSubmit={handleSubmit(onSubmit)}
-        className='mb-[3rem] flex flex-col items-center justify-center gap-4 rounded-md p-6'
+        className='mb-[5.7rem] flex flex-col items-center justify-center gap-4 rounded-md p-6'
       >
         <Controller
           name='username'

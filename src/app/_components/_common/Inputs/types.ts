@@ -6,7 +6,7 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
   type: 'text' | 'password' | 'email' | 'checkbox' | 'search';
   className?: string;
   label: string;
-  errors: FieldErrors;
+  errors?: FieldErrors;
   helpText?: string;
   placeholder?: string;
 }

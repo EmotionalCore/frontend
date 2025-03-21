@@ -12,6 +12,7 @@ export const ButtonVariants = cva('rounded-[0.625rem] hover:brightness-90 active
       green: 'bg-green-0 text-white-F',
       skyblue: 'bg-blue-C text-black-2',
       gray: 'bg-gray-EE text-gray-9',
+      lightGray: 'bg-gray-F4 text-black-0',
       darkGray: 'bg-gray-5 text-white-F',
       white: 'bg-gray-EE text-black-0',
       whiteBorder: 'bg-white-F text-black-0 border-[1px] border-gray-B',
