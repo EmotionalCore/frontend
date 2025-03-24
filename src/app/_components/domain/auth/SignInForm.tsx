@@ -1,5 +1,5 @@
 'use client';
-import React from 'react';
+import React, { useState } from 'react';
 import Inputs from '@/app/_components/_common/Inputs/Inputs';
 import { useForm, Controller } from 'react-hook-form';
 import { useMutation } from '@tanstack/react-query';
@@ -12,6 +12,7 @@ import Buttons from '@/app/_components/_common/Buttons/Button';
 
 const SignInForm = () => {
   const router = useRouter();
+  const [errorMessage, setErrorMessage] = useState('');
   const {
     control,
     handleSubmit,
@@ -36,21 +37,22 @@ const SignInForm = () => {
     },
     onError: (error) => {
       console.error('Sign in failed', error);
+      setErrorMessage('이메일이나 비밀번호를 확인해 주세요');
+      errors.email = { type: 'manual', message: '이메일을 확인해 주세요' };
+      errors.password = { type: 'manual', message: '비밀번호를 확인해 주세요' };
     },
   });
 
   const onSubmit = async (data: PostSignInProps) => {
     console.log('Submitted Data', data);
+    setErrorMessage('');
     signInMutation.mutate(data);
   };
 
   return (
     <>
-      <div className='mt-[5.46rem] font-SCDream5 text-[2.8rem]'>로그인</div>
-      <form
-        onSubmit={handleSubmit(onSubmit)}
-        className='mb-[3rem] flex flex-col items-center justify-center gap-4 rounded-md p-6'
-      >
+      <div className='mt-[5.46rem] flex justify-center font-SCDream5 text-[2.8rem]'>로그인</div>
+      <form onSubmit={handleSubmit(onSubmit)} className='flex flex-col items-center justify-center rounded-md'>
         <Controller
           name='email'
           control={control}
@@ -74,9 +76,13 @@ const SignInForm = () => {
           intent={!isValid || signInMutation.isPending ? 'gray' : 'skyblue'}
           size='mdLogIn'
           disabled={!isValid || signInMutation.isPending}
+          className='mt-[2rem]'
         >
           확인
         </Buttons>
+        {errorMessage && (
+          <div className='mt-[2rem] w-full text-left font-SCDream2 text-[1.6rem] text-red-E'>{errorMessage}</div>
+        )}
         {signInMutation.isError &&
           (() => {
             console.log(signInMutation.error instanceof Error ? signInMutation.error.message : '로그인 중 에러 발생');

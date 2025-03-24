@@ -23,8 +23,8 @@ const inputBoxVariants = cva('', {
 const inputTextVariants = cva(' font-SCDream5 border-[1px] rounded-[1rem]', {
   variants: {
     border: {
-      default: 'w-[59rem] h-[6.2rem] text-gray-6 p-[1rem] text-[1.6rem] border-gray-B',
-      red: 'w-[59rem] h-[6.2rem] text-gray-6 p-[1rem] text-[1.6rem] border-red-E',
+      default: 'w-[58.9rem] h-[6.2rem] text-gray-6 p-[1rem] text-[1.6rem] border-gray-B',
+      red: 'w-[58.9rem] h-[6.2rem] text-gray-6 p-[1rem] text-[1.6rem] border-red-E',
       search: 'placeholder-gray-B w-[115.2rem] text-[2.4rem] text-black-2 py-[1.9rem] pl-[2.1rem] border-black-2',
     },
   },
