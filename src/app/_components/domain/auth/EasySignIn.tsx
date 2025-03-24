@@ -16,7 +16,7 @@ const EasySignIn = () => {
   };
   return (
     <>
-      <div className='mt-[8.2rem] font-SCDream5 text-[2.8rem]'>간편 로그인</div>
+      <div className='mt-[10.4rem] flex justify-center font-SCDream5 text-[2.8rem]'>간편 로그인</div>
       <Buttons
         className='relative mt-[2.2rem] flex'
         intent='lightGray'
@@ -50,19 +50,23 @@ const EasySignIn = () => {
       <div className='mt-[0.8rem] font-SCDream5 text-[1.8rem] text-gray-6'>
         <Inputs label='로그인 상태 유지' name='stay login' type='checkbox' />
       </div>
-      <div className='mt-[6.3rem] flex'>
+      <div className='mt-[6.3rem] flex justify-center'>
         <div className='font-SCDream5 text-[1.8rem] text-gray-9'>아직 감성코어 회원이 아니신가요?</div>
         <Link className='ml-[1.6rem] font-SCDream5 text-[1.8rem] text-blue-0 underline' href='/signup'>
           회원가입
         </Link>
       </div>
-      <div className='mt-[3.2rem] flex font-SCDream5 text-[1.8rem] text-gray-6'>
+      <div className='mt-[3.2rem] flex justify-center font-SCDream5 text-[1.8rem] text-gray-6'>
         <div>SNS로 로그인 및 회원가입 시 감성코어의&nbsp;</div>
-        <div className='underline'>이용약관</div>
+        <Link href='/' className='underline'>
+          이용약관
+        </Link>
         <div>과</div>
       </div>
-      <div className='mb-[15.6rem] flex font-SCDream5 text-[1.8rem] text-gray-6'>
-        <div className='underline'>개인정보 수집 및 이용</div>
+      <div className='mb-[12.8rem] flex justify-center font-SCDream5 text-[1.8rem] text-gray-6'>
+        <Link href='/' className='underline'>
+          개인정보 수집 및 이용
+        </Link>
         <div>에 동의한 것으로 간주합니다.</div>
       </div>
     </>
