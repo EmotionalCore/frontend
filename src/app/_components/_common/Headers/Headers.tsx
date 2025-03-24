@@ -26,12 +26,12 @@ interface ImageLinksProps {
 }
 
 const linksStlyeOption = {
-  '4.9': 'ml-[4.9rem] md:ml-[3rem] hover:text-black-2',
-  '3.8': 'ml-[3.8rem] md:ml-[3rem] hover:text-black-2',
+  '4.9': 'ml-[4.9rem] md:ml-[3rem] hover:text-black-2 sm:ml-0',
+  '3.8': 'ml-[3.8rem] md:ml-[3rem] hover:text-black-2 sm:ml-0',
 };
 
 const imageButtonStyleOption = {
-  logo: 'relative mr-[0.7rem] h-[3.6355rem] w-[4.7564rem]',
+  logo: 'relative mr-[0.7rem] h-[3.6355rem] w-[4.7564rem] sm:mr-0',
   title: 'relative h-[2.2272rem] w-[8.7453rem] sm:hidden',
   add: 'relative size-[2.4rem]',
   user: 'relative flex size-[3.6rem] items-center',
@@ -66,9 +66,9 @@ const linksData = {
 
 const Headers = ({ hasMainPage, hasBoardPage, hasSearchPage, hasLibraryPage }: HeadersProps) => {
   return (
-    <header className='m-auto flex h-[6.3rem] flex-row items-center justify-between bg-white-F font-SCDream5 text-[1.8rem] text-black-2 sm:h-[9.6rem] sm:w-[37.3rem] sm:flex-col md:w-[74.4rem] lg:w-[120rem]'>
+    <header className='m-auto flex h-[6.3rem] flex-row items-center justify-between bg-white-F font-SCDream5 text-[1.8rem] text-black-2 sm:h-[12.5rem] sm:w-[37.3rem] sm:flex-col md:w-[74.4rem] lg:w-[120rem]'>
       {/* desktop/tablet 감성코어 홈 게시판 검색 서재 */}
-      <div className='flex-low flex items-center sm:flex-col'>
+      <div className='flex flex-row items-center sm:flex-col'>
         <ImageButton src={LogoImage} alt='logo' style='logo' />
         <ImageButton src={TitleImage} alt='title' style='title' />
         <Links href={linksData.home} marginLeft='4.9' label='홈' isActive={hasMainPage} />
@@ -84,7 +84,7 @@ const Headers = ({ hasMainPage, hasBoardPage, hasSearchPage, hasLibraryPage }: H
             <div className='ml-[0.6rem] text-[2rem] text-blue-0'>작품등록</div>
           </div>
         </Link>
-        <div className='ml-[4.25rem] md:ml-[3.3rem]'>
+        <div className='ml-[4.25rem] flex justify-center sm:ml-0 md:ml-[3.3rem]'>
           <Link href={linksData.signup} passHref>
             <ImageButton src={NoneUserIcon} alt='none user' style='user' />
           </Link>
