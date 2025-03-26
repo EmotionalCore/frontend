@@ -66,7 +66,7 @@ const linksData = {
 
 const Headers = ({ hasMainPage, hasBoardPage, hasSearchPage, hasLibraryPage }: HeadersProps) => {
   return (
-    <header className='m-auto flex h-[6.3rem] flex-row items-center justify-between bg-white-F font-SCDream5 text-[1.8rem] text-black-2 sm:h-[12.5rem] sm:w-[37.3rem] sm:flex-col md:w-[74.4rem] lg:w-[120rem]'>
+    <header className='m-auto flex h-[6.3rem] flex-row items-center justify-between bg-white-F font-SCDream5 text-[1.8rem] text-black-2 sm:h-[21rem] sm:w-[37.3rem] sm:flex-col md:w-[74.4rem] lg:w-[120rem]'>
       {/* desktop/tablet 감성코어 홈 게시판 검색 서재 */}
       <div className='flex flex-row items-center sm:flex-col'>
         <ImageButton src={LogoImage} alt='logo' style='logo' />
