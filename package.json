@@ -13,17 +13,26 @@
   },
   "lint-staged": {
     "*.{js,jsx,ts,tsx}": [
-      "eslint --fix",
-      "prettier --write"
+      "eslint --fix"
     ],
     "*.{md,json}": "prettier --write"
   },
   "dependencies": {
+    "@hookform/resolvers": "^3.10.0",
+    "@tanstack/react-query": "^5.61.0",
     "axios": "^1.7.7",
-    "next": "14.2.13",
+    "class-variance-authority": "^0.7.1",
+    "clsx": "^2.1.1",
+    "embla-carousel-react": "^8.5.2",
+    "lucide-react": "^0.460.0",
+    "next": "^14.2.15",
     "react": "^18",
     "react-dom": "^18",
-    "react-query": "^3.39.3"
+    "react-hook-form": "^7.53.2",
+    "react-quill": "^2.0.0",
+    "tailwind-merge": "^2.6.0",
+    "zod": "^3.23.8",
+    "zustand": "^5.0.3"
   },
   "devDependencies": {
     "@trivago/prettier-plugin-sort-imports": "^4.3.0",
@@ -34,7 +43,7 @@
     "@typescript-eslint/parser": "^8.7.0",
     "autoprefixer": "^10.4.20",
     "eslint": "^8.57.1",
-    "eslint-config-next": "14.2.13",
+    "eslint-config-next": "14.2.15",
     "eslint-config-prettier": "^9.1.0",
     "eslint-plugin-prettier": "^5.2.1",
     "eslint-plugin-tailwindcss": "^3.17.4",

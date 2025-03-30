@@ -1,7 +1,18 @@
-export default function Home() {
+import React from 'react';
+import Best from './_components/domain/main/works/sections/best/Best';
+import Recommend from './_components/domain/main/works/sections/recommend/Recommend';
+import Monthly from './_components/domain/main/works/sections/monthly/Monthly';
+import Tags from './_components/domain/main/tags/Tags';
+
+const page = () => {
   return (
-    <div className='flex items-center justify-center'>
-      <p className='text-18-700 text-blue-9'>안녕하세요</p>
-    </div>
-  )
-}
+    <main className='flex w-full flex-col items-center'>
+      <Best />
+      <Recommend />
+      <Monthly />
+      <Tags />
+    </main>
+  );
+};
+
+export default page;

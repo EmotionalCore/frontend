@@ -8,6 +8,13 @@
   :root {
     font-size: 62.5%;
   }
+  /*검색 입력에서 입력된 텍스트를 지우는 기본 x버튼 삭제*/
+  input[type='search']::-webkit-search-decoration,
+  input[type='search']::-webkit-search-cancel-button,
+  input[type='search']::-webkit-search-results-button,
+  input[type='search']::-webkit-search-results-decoration {
+    display: none;
+  }
 }
 @layer components {
   /* 자주쓰는 속성들끼리 모아 커스텀 속성을 만들 수 있다. */
