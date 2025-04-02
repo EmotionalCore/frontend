@@ -61,7 +61,7 @@ const linksData = {
   search: '/search',
   library: '/library',
   post: '/forum/post',
-  signup: '/signup',
+  signin: '/signin',
 };
 
 const Headers = ({ hasMainPage, hasBoardPage, hasSearchPage, hasLibraryPage }: HeadersProps) => {
@@ -85,7 +85,7 @@ const Headers = ({ hasMainPage, hasBoardPage, hasSearchPage, hasLibraryPage }: H
           </div>
         </Link>
         <div className='ml-[4.25rem] flex justify-center sm:ml-0 md:ml-[3.3rem]'>
-          <Link href={linksData.signup} passHref>
+          <Link href={linksData.signin} passHref>
             <ImageButton src={NoneUserIcon} alt='none user' style='user' />
           </Link>
         </div>
