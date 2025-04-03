@@ -7,12 +7,23 @@ import NaverIcon from '/public/image/naver-icon.svg';
 import KakaoIcon from '/public/image/kakao-icon.svg';
 import Inputs from '../../_common/Inputs/Inputs';
 import Link from 'next/link';
+import { useSession, signIn, signOut } from 'next-auth/react';
+import { oauthAddress } from '@/api/address';
 
 const EasySignIn = () => {
+  const { data: session } = useSession();
+
   const router = useRouter();
   //   간편 로그인 이동 버튼 : 현재는 main 페이지로 설정
   const handleEasySignIn = () => {
     router.push('/');
+  };
+
+  const handleGoogleSignIn = () => {
+    const registerationId = 'google';
+    const callbackUrl = oauthAddress.google.replace('{registrationId}', registerationId);
+    console.log('callbackUrl:', callbackUrl);
+    signIn(registerationId, { callbackUrl });
   };
   return (
     <>
@@ -22,7 +33,7 @@ const EasySignIn = () => {
         intent='lightGray'
         type='button'
         size='md'
-        onClick={handleEasySignIn}
+        onClick={handleGoogleSignIn}
       >
         <div className='absolute left-[2.9rem]'>
           <div className='relative size-[2.4rem]'>
