@@ -9,7 +9,8 @@
     "plugin:@typescript-eslint/recommended",
     "plugin:prettier/recommended",
     "plugin:tailwindcss/recommended",
-    "next/typescript"
+    "next/typescript",
+    "eslint-config-prettier"
   ],
   "rules": {
     "react/react-in-jsx-scope": "off",
@@ -21,8 +22,9 @@
     "prettier/prettier": [
       "error",
       {
+        "semi": true,
         "singleQuote": true,
-        "parser": "flow"
+        "parser": "typescript"
       }
     ],
     "tailwindcss/classnames-order": "off",
