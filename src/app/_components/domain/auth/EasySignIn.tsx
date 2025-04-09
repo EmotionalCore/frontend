@@ -9,9 +9,17 @@ import Inputs from '../../_common/Inputs/Inputs';
 import Link from 'next/link';
 import { useSession, signIn, signOut } from 'next-auth/react';
 import { oauthAddress } from '@/api/address';
+import { useEffect } from 'react';
 
 const EasySignIn = () => {
   const { data: session } = useSession();
+
+  useEffect(() => {
+    if (session?.accessToken) {
+      localStorage.setItem('GoogleAccessToken', session.accessToken);
+      console.log('Access Token saved to localStorage');
+    }
+  }, [session]);
 
   const router = useRouter();
   //   간편 로그인 이동 버튼 : 현재는 main 페이지로 설정
@@ -25,6 +33,7 @@ const EasySignIn = () => {
     console.log('callbackUrl:', callbackUrl);
     signIn(registerationId, { callbackUrl });
   };
+
   return (
     <>
       <div className='mt-[10.4rem] flex justify-center font-SCDream5 text-[2.8rem]'>간편 로그인</div>

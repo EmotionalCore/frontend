@@ -1,3 +1,12 @@
+'use client';
+
+import { useEffect } from 'react';
+import { useRouter } from 'next/navigation';
+
 export default function GooglePage() {
-  return <>구글 계정으로 로그인되었습니다</>;
+  const router = useRouter();
+  useEffect(() => {
+    router.push('/');
+  }, [router]);
+  return <></>;
 }
