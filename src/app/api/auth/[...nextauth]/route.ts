@@ -11,6 +11,7 @@ declare module 'next-auth' {
       email?: string | null | undefined;
       image?: string | null | undefined;
     };
+    accessToken?: string;
     expires: string;
   }
 }
@@ -46,8 +47,16 @@ const handler = NextAuth({
       if (token && token.sub && session && session.user && typeof token.sub === 'string') {
         console.log('token:', token);
         session.user.id = token.sub;
+        session.accessToken = token.accessToken as string;
       }
       return session;
+    },
+    async jwt({ token, account }) {
+      if (account) {
+        token.accessToken = account.access_token;
+      }
+      console.log('token:', token);
+      return token;
     },
   },
 });
