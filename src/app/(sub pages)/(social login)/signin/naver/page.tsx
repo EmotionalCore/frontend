@@ -1,3 +1,23 @@
-export default function NaverPage() {
-  return <>네이버 계정으로 로그인되었습니다</>;
-}
+'use client';
+import { useEffect } from 'react';
+import { useRouter, useSearchParams } from 'next/navigation';
+
+const NaverPage = () => {
+  const searchParams = useSearchParams();
+  const router = useRouter();
+
+  useEffect(() => {
+    const accessToken = searchParams.get('accessToken');
+    const refreshToken = searchParams.get('refreshToken');
+
+    if (accessToken && refreshToken) {
+      localStorage.setItem('AccessToken', accessToken);
+      localStorage.setItem('RefreshToken', refreshToken);
+      router.push('/');
+    }
+  }, [searchParams, router]);
+
+  return <div>네이버 로그인 처리 중입니다...</div>;
+};
+
+export default NaverPage;
