@@ -1,3 +1,5 @@
+'use client';
+
 import { ChevronDown } from 'lucide-react';
 import Image from 'next/image';
 import defaultImage from '@/../public/image/default-image.svg';
