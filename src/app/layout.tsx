@@ -4,7 +4,6 @@ import './globals.css';
 import Providers from './_lib/react-query/providers';
 import Footer from './_components/_common/Footer';
 import HeadersWrapper from './_components/_common/Headers/HeadersWrapper';
-import { NextAuthSession } from './SessionProvider';
 
 const SCDream1 = localFont({
   src: './fonts/SCDream1.otf',
@@ -76,11 +75,9 @@ export default function RootLayout({ children }: Readonly<{ children: React.Reac
     <html lang='kr' className={fontVariables}>
       <Providers>
         <body className={fontClassNames}>
-          <NextAuthSession>
-            <HeadersWrapper />
-            {children}
-            <Footer />
-          </NextAuthSession>
+          <HeadersWrapper />
+          {children}
+          <Footer />
         </body>
       </Providers>
     </html>

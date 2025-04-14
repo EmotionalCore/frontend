@@ -1,37 +1,36 @@
 'use client';
 import Image from 'next/image';
-import { useRouter } from 'next/navigation';
 import Buttons from '../../_common/Buttons/Button';
 import GoogleIcon from '/public/image/google-icon.svg';
 import NaverIcon from '/public/image/naver-icon.svg';
 import KakaoIcon from '/public/image/kakao-icon.svg';
 import Inputs from '../../_common/Inputs/Inputs';
 import Link from 'next/link';
-import { useSession, signIn, signOut } from 'next-auth/react';
-import { oauthAddress } from '@/api/address';
-import { useEffect } from 'react';
 
 const EasySignIn = () => {
-  const { data: session } = useSession();
-
-  useEffect(() => {
-    if (session?.accessToken) {
-      localStorage.setItem('GoogleAccessToken', session.accessToken);
-      console.log('Access Token saved to localStorage');
+  const handleSocialSignIn = (provider: 'google' | 'naver' | 'kakao') => {
+    let oauthUrl = '';
+    switch (provider) {
+      case 'google':
+        const googleClientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
+        const googleRedirectUri = encodeURIComponent('https://emotioncores.com/login/oauth2/code/google');
+        const googleScope = encodeURIComponent('openid email profile');
+        const googleState = 'emotion-google-login';
+        oauthUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${googleClientId}&redirect_uri=${googleRedirectUri}&response_type=code&scope=${googleScope}&access_type=offline&state=${googleState}`;
+        break;
+      case 'naver':
+        const naverClientId = process.env.NEXT_PUBLIC_NAVER_CLIENT_ID;
+        const naverState = 'emotion-naver-login';
+        const naverRedirectUri = encodeURIComponent('https://emotioncores.com/signin/naver');
+        oauthUrl = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${naverClientId}&redirect_uri=${naverRedirectUri}&state=${naverState}`;
+        break;
+      case 'kakao':
+        const kakaoClientId = process.env.NEXT_PUBLIC_KAKAO_CLIENT_ID;
+        const kakaoRedirectUri = encodeURIComponent('https://emotioncores.com/auth/oauth2/kakao');
+        oauthUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${kakaoClientId}&redirect_uri=${kakaoRedirectUri}&response_type=code`;
+        break;
     }
-  }, [session]);
-
-  const router = useRouter();
-  //   간편 로그인 이동 버튼 : 현재는 main 페이지로 설정
-  const handleEasySignIn = () => {
-    router.push('/');
-  };
-
-  const handleGoogleSignIn = () => {
-    const registerationId = 'google';
-    const callbackUrl = oauthAddress.google.replace('{registrationId}', registerationId);
-    console.log('callbackUrl:', callbackUrl);
-    signIn(registerationId, { callbackUrl });
+    window.location.href = oauthUrl;
   };
 
   return (
@@ -42,7 +41,7 @@ const EasySignIn = () => {
         intent='lightGray'
         type='button'
         size='md'
-        onClick={handleGoogleSignIn}
+        onClick={() => handleSocialSignIn('google')}
       >
         <div className='absolute left-[2.9rem]'>
           <div className='relative size-[2.4rem]'>
@@ -51,7 +50,13 @@ const EasySignIn = () => {
         </div>
         <div className='absolute left-1/2 -translate-x-1/2'>구글 로그인</div>
       </Buttons>
-      <Buttons className='relative mt-[1.6rem] flex' intent='green' type='button' size='md' onClick={handleEasySignIn}>
+      <Buttons
+        className='relative mt-[1.6rem] flex'
+        intent='green'
+        type='button'
+        size='md'
+        onClick={() => handleSocialSignIn('naver')}
+      >
         <div className='absolute left-[2.9rem]'>
           <div className='relative size-[2.4rem]'>
             <Image src={NaverIcon} alt='naver icon' fill style={{ objectFit: 'contain' }} />
@@ -59,7 +64,13 @@ const EasySignIn = () => {
         </div>
         <div>네이버 로그인</div>
       </Buttons>
-      <Buttons className='relative mt-[1.6rem] flex' intent='yellow' type='button' size='md' onClick={handleEasySignIn}>
+      <Buttons
+        className='relative mt-[1.6rem] flex'
+        intent='yellow'
+        type='button'
+        size='md'
+        onClick={() => handleSocialSignIn('kakao')}
+      >
         <div className='absolute left-[2.9rem]'>
           <div className='relative size-[2.4rem]'>
             <Image src={KakaoIcon} alt='kakao icon' fill style={{ objectFit: 'contain' }} />
