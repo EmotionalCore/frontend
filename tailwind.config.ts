@@ -307,6 +307,7 @@ const config: Config = {
           0: '#000',
         },
         blue: {
+          '02': '#0231A6',
           0: '#067DFD',
           '00': '#0062E5',
           B: '#BDBDBD',
