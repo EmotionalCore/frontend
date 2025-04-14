@@ -57,11 +57,11 @@ const ImageButton = ({ src, alt, style }: ImageLinksProps) => {
 
 const linksData = {
   home: '/',
-  board: '/board',
+  forum: '/forum',
   search: '/search',
   library: '/library',
-  post: '/forum/post',
-  signin: '/signin',
+  register: '/forum/register',
+  signup: '/signup',
 };
 
 const Headers = ({ hasMainPage, hasBoardPage, hasSearchPage, hasLibraryPage }: HeadersProps) => {
@@ -72,13 +72,13 @@ const Headers = ({ hasMainPage, hasBoardPage, hasSearchPage, hasLibraryPage }: H
         <ImageButton src={LogoImage} alt='logo' style='logo' />
         <ImageButton src={TitleImage} alt='title' style='title' />
         <Links href={linksData.home} marginLeft='4.9' label='홈' isActive={hasMainPage} />
-        <Links href={linksData.board} marginLeft='3.8' label='게시판' isActive={hasBoardPage} />
+        <Links href={linksData.forum} marginLeft='3.8' label='게시판' isActive={hasBoardPage} />
         <Links href={linksData.search} marginLeft='3.8' label='검색' isActive={hasSearchPage} />
         <Links href={linksData.library} marginLeft='3.8' label='서재' isActive={hasLibraryPage} />
       </div>
       {/* desktop/tablet 작품등록 프로필 */}
       <div className='flex-low flex sm:flex-col'>
-        <Link href={linksData.post} passHref>
+        <Link href={linksData.register} passHref>
           <div className='flex items-center'>
             <ImageButton src={AddIcon} alt='add' style='add' />
             <div className='ml-[0.6rem] text-[2rem] text-blue-0'>작품등록</div>
