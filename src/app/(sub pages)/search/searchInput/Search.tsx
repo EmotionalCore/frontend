@@ -1,9 +1,9 @@
 'use client';
 
-import { useForm } from 'react-hook-form';
+import React from 'react';
+import { useForm, Controller } from 'react-hook-form';
 import Inputs from '@/app/_components/_common/Inputs/Inputs';
-import { zodResolver } from '@hookform/resolvers/zod';
-import { InputsValidation } from '@/app/_lib/zod/InputsValidation';
+import { useRouter } from 'next/navigation';
 
 interface FormData {
   search: string;
@@ -11,31 +11,37 @@ interface FormData {
 
 const Search = () => {
   const {
-    register,
+    control,
     handleSubmit,
     formState: { errors },
     watch,
   } = useForm<FormData>({
-    resolver: zodResolver(InputsValidation),
     defaultValues: {
       search: '',
     },
   });
 
+  const router = useRouter();
+
   const currentValues = watch();
 
-  const handleError = () => {
-    //1개 이상의 input이 유효성 검사를 통과하지 못했을 때 실행
-    console.log(currentValues, errors);
-  };
-  const onSubmit = (data: FormData) => {
+  const onSubmit = () => {
     //모든 input이 유효성 검사를 통과했을 때 실행
-    console.log(currentValues);
+    router.push(`/search?keyword=${currentValues.search}`);
+    console.log('출력', currentValues.search);
   };
 
   return (
     <div>
-      <Inputs name='search' type='search' label='' register={register('search')} helpText={''} errors={errors} />
+      <form onSubmit={handleSubmit(onSubmit)}>
+        <Controller
+          name='search'
+          control={control}
+          render={({ field }) => (
+            <Inputs {...field} name='search' type='search' label='Search' errors={errors} onClick={onSubmit} />
+          )}
+        />
+      </form>
     </div>
   );
 };
