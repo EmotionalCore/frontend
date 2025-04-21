@@ -1,5 +1,5 @@
 import { apiRequest } from '@/app/_lib/axios/instance/instance';
-import { WorkData } from './type';
+import { getWorkSeriesProps, PostWorkEpisodeProps, TagsProps, WorkData } from './type';
 import { worksAddress } from '../address';
 
 export const getBestWorksApi = (): Promise<WorkData[]> => apiRequest('get', worksAddress.best);
@@ -15,3 +15,15 @@ export const getPopularWorksApi = (): Promise<WorkData[]> => apiRequest('get', w
 export const getBestAuthorApi = (): Promise<WorkData[]> => apiRequest('get', worksAddress.authorBest);
 
 export const getNewAuthorApi = (): Promise<WorkData[]> => apiRequest('get', worksAddress.new.author);
+
+export const getTagAllListApi = (): Promise<TagsProps[]> => apiRequest('get', worksAddress.tag);
+
+export const postWorkSeriesApi = () => apiRequest('post', worksAddress.series);
+export const getWorkSeriesApi = (): Promise<getWorkSeriesProps> => apiRequest('get', worksAddress.series);
+export const updateWorkSeriesApi = () => apiRequest('put', worksAddress.series);
+export const deleteWorkSeriesApi = () => apiRequest('delete', worksAddress.series);
+
+export const postWorkEpisodeApi = (): Promise<PostWorkEpisodeProps> => apiRequest('post', worksAddress.episode);
+export const getWorkEpisodeApi = () => apiRequest('get', worksAddress.episode);
+export const updateWorkEpisodeApi = () => apiRequest('put', worksAddress.episode);
+export const deleteWorkEpisodeApi = () => apiRequest('delete', worksAddress.episode);
