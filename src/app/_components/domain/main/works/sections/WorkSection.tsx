@@ -29,8 +29,6 @@ const WorkSection = ({ keyword, title, queryKey, fetchFn, hasMoreLink = false, v
   const { data, isLoading } = useQuery<WorkData[], Error>({
     queryKey: [queryKey],
     queryFn: fetchFn,
-    staleTime: 60 * 1000,
-    retry: 0,
   });
 
   return (
