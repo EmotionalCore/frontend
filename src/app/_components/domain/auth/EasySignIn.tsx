@@ -21,12 +21,12 @@ const EasySignIn = () => {
       case 'naver':
         const naverClientId = process.env.NEXT_PUBLIC_NAVER_CLIENT_ID;
         const naverState = 'emotion-naver-login';
-        const naverRedirectUri = encodeURIComponent('https://emotioncores.com/signin/naver');
+        const naverRedirectUri = encodeURIComponent('https://localhost:3000/signin/naver');
         oauthUrl = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${naverClientId}&redirect_uri=${naverRedirectUri}&state=${naverState}`;
         break;
       case 'kakao':
         const kakaoClientId = process.env.NEXT_PUBLIC_KAKAO_CLIENT_ID;
-        const kakaoRedirectUri = encodeURIComponent('https://emotioncores.com/auth/oauth2/kakao');
+        const kakaoRedirectUri = encodeURIComponent('http://localhost:3000/auth/oauth2/kakao');
         oauthUrl = `https://kauth.kakao.com/oauth/authorize?client_id=${kakaoClientId}&redirect_uri=${kakaoRedirectUri}&response_type=code`;
         break;
     }
