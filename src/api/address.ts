@@ -34,6 +34,8 @@ export const worksAddress = {
     default: `${worksBaseUrl}new`,
     author: `${worksBaseUrl}/new/author`,
   },
+  episode: `${worksBaseUrl}/episode`,
+  series: `${worksBaseUrl}/series`,
   all: `${worksBaseUrl}all`,
   best: `${worksBaseUrl}best/today`,
   authorBest: `${worksBaseUrl}author/best/monthly`,
