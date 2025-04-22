@@ -13,7 +13,7 @@ const EasySignIn = () => {
     switch (provider) {
       case 'google':
         const googleClientId = process.env.NEXT_PUBLIC_GOOGLE_CLIENT_ID;
-        const googleRedirectUri = encodeURIComponent('https://emotioncores.com/login/oauth2/code/google');
+        const googleRedirectUri = encodeURIComponent('http://localhost:3000/login/oauth2/code/google');
         const googleScope = encodeURIComponent('openid email profile');
         const googleState = 'emotion-google-login';
         oauthUrl = `https://accounts.google.com/o/oauth2/v2/auth?client_id=${googleClientId}&redirect_uri=${googleRedirectUri}&response_type=code&scope=${googleScope}&access_type=offline&state=${googleState}`;
@@ -21,7 +21,7 @@ const EasySignIn = () => {
       case 'naver':
         const naverClientId = process.env.NEXT_PUBLIC_NAVER_CLIENT_ID;
         const naverState = 'emotion-naver-login';
-        const naverRedirectUri = encodeURIComponent('https://localhost:3000/signin/naver');
+        const naverRedirectUri = encodeURIComponent('http://localhost:3000/signin/naver');
         oauthUrl = `https://nid.naver.com/oauth2.0/authorize?response_type=code&client_id=${naverClientId}&redirect_uri=${naverRedirectUri}&state=${naverState}`;
         break;
       case 'kakao':
