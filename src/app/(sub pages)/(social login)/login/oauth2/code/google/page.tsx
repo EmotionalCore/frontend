@@ -24,8 +24,8 @@ const GooglePage = () => {
 
       if (res.ok) {
         const data = await res.json();
-        localStorage.setItem('AccessToken', data.accessToken);
-        localStorage.setItem('RefreshToken', data.refreshToken);
+        localStorage.setItem('accessToken', data.accessToken);
+        localStorage.setItem('refreshToken', data.refreshToken);
         router.push('/');
       } else {
         console.error('토큰 요청 실패');
