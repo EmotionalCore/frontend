@@ -1,4 +1,4 @@
-import React, { useState } from 'react';
+import React, { useState, forwardRef } from 'react';
 import { cn } from '@/app/_utils/cn';
 import { cva } from 'class-variance-authority';
 import Image from 'next/image';
@@ -63,20 +63,15 @@ const inputSideTextVariants = cva('', {
     font: 'f200',
   },
 });
-const Inputs = ({ name, type, helpText, label, errors, ...props }: InputProps) => {
+const Inputs = forwardRef<HTMLInputElement, InputProps>(({ name, type, helpText, label, errors, ...props }, ref) => {
   const [showPassword, setShowPassword] = useState(false);
-  const passwordShowChange = () => {
-    setShowPassword(!showPassword);
-  };
-  const passwordType = () => {
-    if (type == 'password') {
-      return showPassword ? 'text' : type;
-    }
-    return type;
-  };
+
+  const passwordShowChange = () => setShowPassword(!showPassword);
+  const passwordType = () => (type === 'password' ? (showPassword ? 'text' : 'password') : type);
+
   return (
     <>
-      {(type == 'text' || type == 'email' || type == 'password') && (
+      {(type === 'text' || type === 'email' || type === 'password') && (
         <div className={cn(inputBoxVariants())}>
           <label htmlFor={name} className={cn(inputSideTextVariants({ position: 'left' }))}>
             {label}
@@ -84,12 +79,12 @@ const Inputs = ({ name, type, helpText, label, errors, ...props }: InputProps) =
           <div className='relative mt-[1.4rem]'>
             <input
               id={name}
+              ref={ref}
               type={passwordType()}
               className={errors && errors[name] ? cn(inputTextVariants({ border: 'red' })) : cn(inputTextVariants())}
               {...props}
             />
-
-            {type == 'password' && (
+            {type === 'password' && (
               <button
                 type='button'
                 title='Password Show or Hide'
@@ -100,39 +95,42 @@ const Inputs = ({ name, type, helpText, label, errors, ...props }: InputProps) =
               </button>
             )}
           </div>
-          <div className={cn(inputSideTextVariants({ color: 'help', margin: 'm14' }))}>{helpText}</div>
+          {helpText && <div className={cn(inputSideTextVariants({ color: 'help', margin: 'm14' }))}>{helpText}</div>}
           {errors && errors[name]?.message && (
             <span className={cn(inputSideTextVariants({ margin: 'm1', color: 'red' }))}>
-              {typeof errors[name].message == 'string' ? errors[name].message : ''}
+              {typeof errors[name].message === 'string' ? errors[name].message : ''}
             </span>
           )}
         </div>
       )}
-      {type == 'checkbox' && (
+      {type === 'checkbox' && (
         <div className={cn(inputBoxVariants({ layout: 'checkbox' }))}>
-          <input id={name} type={type} className={'size-[2.4rem] text-gray-6'} {...props} />
-          <label htmlFor={name} className={cn(inputSideTextVariants({ font: 'f500' }), 'ml-[1.1rem] items-center')}>
+          <input id={name} type={type} ref={ref} className='size-[2.4rem] text-gray-6' {...props} />
+          <label htmlFor={name} className={cn(inputSideTextVariants({ font: 'f500' }), 'ml-[1.1rem]')}>
             {label}
           </label>
         </div>
       )}
-      {type == 'search' && (
+      {type === 'search' && (
         <div className={cn(inputBoxVariants({ layout: 'search' }))}>
           <input
             id={name}
-            type={type}
+            ref={ref}
+            type='search'
             placeholder='검색하세요.'
             className={cn(inputTextVariants({ border: 'search' }))}
             {...props}
           />
           <button type='submit' title='Search' className='absolute right-[7rem] top-1/2 size-[4.4rem] -translate-y-1/2'>
-            <Image src={SearchIcon} alt='search'></Image>
+            <Image src={SearchIcon} alt='search' />
           </button>
         </div>
       )}
     </>
   );
-};
+});
+
+Inputs.displayName = 'Inputs';
 export default Inputs;
 
 //input 사용 예시
