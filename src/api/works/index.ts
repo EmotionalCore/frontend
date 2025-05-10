@@ -35,3 +35,8 @@ export const getPopularTagsApi = (): Promise<TagData[]> => apiRequest('get', wor
 
 export const getSearchResultApi = (keyword: string): Promise<SearchData> =>
   apiRequest('get', worksAddress.search.default(keyword));
+
+export const getAllWorksApi = (): Promise<WorkData[]> => apiRequest('get', worksAddress.all);
+
+// export const getTagWorksApi = (keyword: string): Promise<SearchData> =>
+//   apiRequest('get', worksAddress.tag.default(keyword));

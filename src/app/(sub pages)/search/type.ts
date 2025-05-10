@@ -12,3 +12,8 @@ export interface SearchSectionProps extends VariantProps<typeof sectionStyles> {
   variant: CardVariant;
   keyword?: string;
 }
+
+export interface ContentProps {
+  contentTitle: string;
+  content?: string | number;
+}

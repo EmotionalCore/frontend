@@ -24,9 +24,10 @@ const Writer = () => {
                 <Image
                   width={100}
                   height={100}
-                  className='rounded-[20rem]'
+                  className='rounded-[20rem] object-cover'
                   src={`https://emotioncores.com${item.coverImageUrl}`}
                   alt={item.title}
+                  priority
                 />
               )}
             </div>

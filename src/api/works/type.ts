@@ -64,7 +64,7 @@ export interface SearchData {
     seriesCount: number,
     description: string,
     links: string,
-    tags: string,
+    tags: string[],
     profileImageUrl: string,
   }[];
 }
