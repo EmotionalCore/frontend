@@ -20,12 +20,10 @@ const GooglePage = () => {
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ code }),
+        credentials: 'include',
       });
 
       if (res.ok) {
-        const data = await res.json();
-        localStorage.setItem('accessToken', data.accessToken);
-        localStorage.setItem('refreshToken', data.refreshToken);
         router.push('/');
       } else {
         console.error('토큰 요청 실패');
