@@ -10,8 +10,4 @@ export interface PostSignInProps {
   password: string;
 }
 
-export interface JwtResponse {
-  grantType: string;
-  accessToken: string;
-  refreshToken: string;
-}
+export type JwtResponse = string;

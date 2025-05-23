@@ -8,6 +8,7 @@ import { postSignInApi } from '@/api/auth';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { InputsSignInValidation } from '@/app/_lib/zod/InputsValidation';
 import { useRouter } from 'next/navigation';
+import Cookies from 'js-cookie';
 import Buttons from '@/app/_components/_common/Buttons/Button';
 
 const SignInForm = () => {
@@ -31,7 +32,8 @@ const SignInForm = () => {
     mutationFn: (signinData: PostSignInProps) => postSignInApi(signinData),
     onSuccess: (data) => {
       console.log('Sign in successful');
-      localStorage.setItem('accessToken', data.accessToken);
+      console.log('accessToken', data);
+      localStorage.setItem('accessToken', data);
       reset();
       router.replace('/');
     },
