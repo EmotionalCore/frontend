@@ -60,6 +60,8 @@ const linksData = {
   forum: '/forum',
   search: '/search',
   library: '/library',
+  post: '/forum/post',
+  signin: '/signin',
   register: '/forum/register',
   signup: '/signup',
 };
