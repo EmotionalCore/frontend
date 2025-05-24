@@ -9,6 +9,7 @@ export interface ButtonProps {
   intent?: Intent;
   size: Size;
   outline: boolean;
+  disabled?: boolean;
 }
 
 export interface ButtonsProps extends ButtonHTMLAttributes<HTMLButtonElement>, VariantProps<typeof ButtonVariants> {
