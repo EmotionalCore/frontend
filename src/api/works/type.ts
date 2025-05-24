@@ -17,7 +17,6 @@ export interface TagsProps {
 }
 
 export interface PostWorkSeriesProps {
-  id: number;
   title: string;
   description: string;
   type: string;
@@ -25,8 +24,9 @@ export interface PostWorkSeriesProps {
   image: File;
 }
 
-export interface getWorkSeriesProps {
-  seriesId: number;
+export interface GetMyWorksProps {
+  id: number;
+  title: string;
 }
 
 export interface PostWorkEpisodeProps {

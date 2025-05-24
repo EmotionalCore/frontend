@@ -33,9 +33,9 @@ export const ButtonVariants = cva('rounded-[0.625rem] hover:brightness-90 active
   },
 });
 
-const Buttons = ({ intent, size, children, className, ...props }: ButtonsProps) => {
+const Buttons = ({ intent, size, children, className, disabled, ...props }: ButtonsProps) => {
   return (
-    <button className={cn(ButtonVariants({ intent, size }), className)} {...props}>
+    <button disabled={disabled} className={cn(ButtonVariants({ intent, size }), className)} {...props}>
       {children}
     </button>
   );

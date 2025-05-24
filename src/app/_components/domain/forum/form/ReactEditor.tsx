@@ -1,16 +1,24 @@
 'use client';
 
-import { useMemo, useState } from 'react';
-import 'react-quill/dist/quill.snow.css';
-import ReactModule from './ReactModule';
-import dompurify from 'dompurify';
+import { useState } from 'react';
 import dynamic from 'next/dynamic';
+import dompurify from 'dompurify';
 import Loading from '@/app/loading';
+import ReactModule from './ReactModule';
+import 'react-quill/dist/quill.snow.css';
+
 const ReactQuill = dynamic(() => import('react-quill'), {
   loading: () => <Loading type='spinner' />,
   ssr: false,
 });
-const ReactEditor = () => {
+
+interface ReactEditorProps {
+  onChange: (safeHtml: string) => void;
+}
+
+const ReactEditor = ({ onChange }: ReactEditorProps) => {
+  const [content, setContent] = useState<string>('');
+
   const formats: string[] = [
     'header',
     'size',
@@ -32,24 +40,33 @@ const ReactEditor = () => {
     'code-block',
     'clean',
   ];
-  const [content, setContent] = useState<string>('');
-  const sanitizer = dompurify.sanitize;
 
-  const modules = useMemo(
-    () => ({
-      toolbar: {
-        container: '#toolBar',
-      },
-    }),
-    []
-  );
+  const modules = {
+    toolbar: {
+      container: '#toolBar',
+    },
+  };
+
+  const handleChange = (value: string) => {
+    const cleanHtml = dompurify.sanitize(value);
+    setContent(cleanHtml);
+    onChange(cleanHtml);
+  };
 
   return (
     <div>
       <div id='toolBar'>
         <ReactModule />
       </div>
-      <ReactQuill theme='snow' modules={modules} formats={formats} style={{ height: '948px', width: '1200px' }} />
+      <ReactQuill
+        theme='snow'
+        value={content}
+        onChange={handleChange}
+        modules={modules}
+        formats={formats}
+        style={{ height: '948px', width: '1200px' }}
+        placeholder='작품 내용을 입력하세요'
+      />
     </div>
   );
 };

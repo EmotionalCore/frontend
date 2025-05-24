@@ -6,15 +6,21 @@ interface ClassSeriesDropDownProps {
   id: number;
   key: number;
   value: string;
-  isOpen: boolean;
-  setIsOpen: Dispatch<SetStateAction<boolean>>;
+  isSeriesDropDownOpen: boolean;
+  setIsSeriesDropDownOpen: Dispatch<SetStateAction<boolean>>;
   setSeriesTypeValue: (value: string) => void;
 }
 
-const ClassSeriesDropDown = ({ isOpen, setIsOpen, id, value, setSeriesTypeValue }: ClassSeriesDropDownProps) => {
+const ClassSeriesDropDown = ({
+  isSeriesDropDownOpen,
+  setIsSeriesDropDownOpen,
+  id,
+  value,
+  setSeriesTypeValue,
+}: ClassSeriesDropDownProps) => {
   const onSelectSeriesValue = () => {
     setSeriesTypeValue(value);
-    setIsOpen(!isOpen);
+    setIsSeriesDropDownOpen(!isSeriesDropDownOpen);
   };
   return (
     <li
