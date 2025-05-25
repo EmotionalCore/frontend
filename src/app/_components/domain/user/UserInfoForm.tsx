@@ -2,7 +2,9 @@
 import { useMutation } from '@tanstack/react-query';
 import { Controller, useForm } from 'react-hook-form';
 import Inputs from '../../_common/Inputs/Inputs';
-import { apiRequest } from '@/app/_lib/axios/instance/instance';
+import { fetchUserDataApi, updateUserDataApi } from '@/api/auth';
+import Buttons from '../../_common/Buttons/Button';
+import { useCallback, useEffect } from 'react';
 
 export interface UserInfo {
   username: string;
@@ -17,6 +19,7 @@ const UserInfoForm = () => {
   const {
     control,
     handleSubmit,
+    setValue,
     formState: { errors, isValid },
   } = useForm<UserInfo>({
     defaultValues: {
@@ -30,8 +33,24 @@ const UserInfoForm = () => {
     mode: 'onChange',
   });
 
+  const onMyPage = useCallback(async () => {
+    console.log('mypage에 accessToken 확인', localStorage.getItem('accessToken'));
+    try {
+      const userData = await fetchUserDataApi();
+      console.log('User Data:', userData);
+      setValue('username', userData.username);
+      setValue('email', userData.email);
+      setValue('profileImageUrl', userData.profileImageUrl ? userData.profileImageUrl : '');
+      setValue('description', userData.description ? userData.description : '');
+      setValue('links', userData.links ? userData.links : '');
+      setValue('tags', userData.tags ? userData.tags : []);
+    } catch (error) {
+      console.error('Error fetching user data:', error);
+    }
+  }, [setValue]);
+
   const mutation = useMutation({
-    mutationFn: (data: UserInfo) => apiRequest('put', 'api/mypage/update', data),
+    mutationFn: (data: UserInfo) => updateUserDataApi(data),
     onSuccess: (data) => {
       console.log('회원정보 수정 성공', data);
     },
@@ -41,8 +60,13 @@ const UserInfoForm = () => {
   });
 
   const userInfoSubmit = (data: UserInfo) => {
+    console.log('보낼 데이터 확인', data);
     mutation.mutate(data);
   };
+
+  useEffect(() => {
+    onMyPage();
+  }, [onMyPage]);
 
   return (
     <form onSubmit={handleSubmit(userInfoSubmit)}>
@@ -84,9 +108,9 @@ const UserInfoForm = () => {
           />
         )}
       />
-      <button type='submit' disabled={!isValid}>
+      <Buttons type='submit' disabled={!isValid}>
         정보수정
-      </button>
+      </Buttons>
     </form>
   );
 };
