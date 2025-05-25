@@ -35,3 +35,23 @@ export async function checkUsernameApi(username: string) {
   console.log('API response', response);
   return response.exists;
 }
+
+interface UserDatail {
+  username: string;
+  email: string;
+  profileImageUrl: string | null;
+  description: string | null;
+  links: string | null;
+  tags: string[] | null;
+}
+
+// 마이페이지 정보 fetch
+export async function fetchUserDataApi(): Promise<UserDatail> {
+  const response = await apiRequest<UserDatail, null>('get', '/api/mypage/mydetail');
+  return response;
+}
+
+// 마이페이지 회원정보 수정
+export async function updateUserDataApi(data: UserDatail) {
+  apiRequest('put', '/api/mypage/update', data);
+}
