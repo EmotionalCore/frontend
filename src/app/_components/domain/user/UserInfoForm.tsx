@@ -2,7 +2,7 @@
 import { useMutation } from '@tanstack/react-query';
 import { Controller, useForm } from 'react-hook-form';
 import Inputs from '../../_common/Inputs/Inputs';
-import { fetchUserDataApi, updateUserDataApi } from '@/api/auth';
+import { fetchUserDataApi, updateUserDataApi } from '@/api/mypage';
 import Buttons from '../../_common/Buttons/Button';
 import { useCallback, useEffect } from 'react';
 
@@ -34,10 +34,8 @@ const UserInfoForm = () => {
   });
 
   const onMyPage = useCallback(async () => {
-    console.log('mypage에 accessToken 확인', localStorage.getItem('accessToken'));
     try {
       const userData = await fetchUserDataApi();
-      console.log('User Data:', userData);
       setValue('username', userData.username);
       setValue('email', userData.email);
       setValue('profileImageUrl', userData.profileImageUrl ? userData.profileImageUrl : '');
@@ -45,7 +43,7 @@ const UserInfoForm = () => {
       setValue('links', userData.links ? userData.links : '');
       setValue('tags', userData.tags ? userData.tags : []);
     } catch (error) {
-      console.error('Error fetching user data:', error);
+      console.error('회원정보 가져오는 중 에러:', error);
     }
   }, [setValue]);
 
@@ -60,7 +58,6 @@ const UserInfoForm = () => {
   });
 
   const userInfoSubmit = (data: UserInfo) => {
-    console.log('보낼 데이터 확인', data);
     mutation.mutate(data);
   };
 
