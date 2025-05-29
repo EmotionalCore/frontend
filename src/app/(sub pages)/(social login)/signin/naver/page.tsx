@@ -6,19 +6,20 @@ import Loading from '@/app/loading';
 const NaverPage = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
-
   const naverCallRef = useRef(false);
+
   useEffect(() => {
     const code = searchParams.get('code');
     const state = searchParams.get('state');
-    // console.log('인가코드 Naver: ', code);
-    // console.log('State Naver: ', state);
+    console.log('인가코드 Naver: ', code);
+    console.log('State Naver: ', state);
 
     if (!code || naverCallRef.current) return;
     naverCallRef.current = true;
 
     const getTokens = async () => {
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/signin/naver`, {
+        // refreshToken 받기
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ code, state }),
@@ -26,6 +27,9 @@ const NaverPage = () => {
       });
 
       if (res.ok) {
+        // accessToken 받기
+        const { accessToken } = await res.json();
+        localStorage.setItem('accessToken', accessToken);
         router.push('/');
       } else {
         console.error('토큰 요청 실패');
