@@ -6,17 +6,18 @@ import Loading from '@/app/loading';
 const KakaoPage = () => {
   const searchParams = useSearchParams();
   const router = useRouter();
-
   const kakaoCallRef = useRef(false);
+
   useEffect(() => {
     const code = searchParams.get('code');
-    // console.log('인가코드 Kakao: ', code);
+    console.log('인가코드 Kakao: ', code);
 
     if (!code || kakaoCallRef.current) return;
     kakaoCallRef.current = true;
 
     const getTokens = async () => {
       const res = await fetch(`${process.env.NEXT_PUBLIC_API_URL}/auth/oauth2/kakao`, {
+        // refreshtoken 받기
         method: 'POST',
         headers: { 'Content-Type': 'application/json' },
         body: JSON.stringify({ code }),
@@ -24,6 +25,9 @@ const KakaoPage = () => {
       });
 
       if (res.ok) {
+        // accessToken 받기
+        const { accessToken } = await res.json();
+        localStorage.setItem('accessToken', accessToken);
         router.push('/');
       } else {
         console.error('토큰 요청 실패');

@@ -8,7 +8,6 @@ import { postSignInApi } from '@/api/auth';
 import { zodResolver } from '@hookform/resolvers/zod';
 import { InputsSignInValidation } from '@/app/_lib/zod/InputsValidation';
 import { useRouter } from 'next/navigation';
-import Cookies from 'js-cookie';
 import Buttons from '@/app/_components/_common/Buttons/Button';
 
 const SignInForm = () => {
