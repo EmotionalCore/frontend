@@ -5,7 +5,7 @@ import { getNewAuthorApi } from '@/api/works';
 import Image from 'next/image';
 
 const Writer = () => {
-  const { data, isLoading } = useQuery<WorkData[], Error>({
+  const { data } = useQuery<WorkData[], Error>({
     queryKey: ['author'],
     queryFn: () => getNewAuthorApi(),
   });
@@ -24,7 +24,7 @@ const Writer = () => {
                 <Image
                   width={100}
                   height={100}
-                  className='rounded-[20rem] object-cover'
+                  className='h-[100px] rounded-[20rem] object-cover'
                   src={`https://emotioncores.com${item.coverImageUrl}`}
                   alt={item.title}
                   priority

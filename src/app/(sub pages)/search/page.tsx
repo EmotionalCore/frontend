@@ -13,7 +13,7 @@ const SearchMainPage = () => {
   const keyword = searchParams.get('keyword'); // 쿼리 스트링에서 keyword 값 가져오기
 
   return (
-    <div className='pl-[4.5rem] pt-[4rem]'>
+    <div className='pt-[4rem]'>
       <div className='pb-[6.5rem]'>
         <Search />
       </div>
@@ -23,9 +23,11 @@ const SearchMainPage = () => {
         </div>
       ) : (
         <>
-          <Keywords />
-          <Works />
-          <Writer />
+          <div className='m-[0 auto] flex w-[120rem] flex-col justify-center'>
+            <Keywords />
+            <Works />
+            <Writer />
+          </div>
         </>
       )}
     </div>

@@ -6,7 +6,7 @@ import { useQuery } from '@tanstack/react-query';
 import Buttons from '@/app/_components/_common/Buttons/Button';
 import Image from 'next/image';
 import { SearchContent } from './keywordResultSection';
-import { useEffect, useState } from 'react';
+import { useState } from 'react';
 
 interface ResultProps {
   keyword: string;
@@ -19,7 +19,7 @@ const Result = ({ keyword }: ResultProps) => {
   const [workPage, setWorkPage] = useState(1);
   const [authorPage, setAuthorPage] = useState(1);
 
-  const { data, error, isLoading } = useQuery<SearchData, Error>({
+  const { data } = useQuery<SearchData, Error>({
     queryKey: ['searchResults', keyword],
     queryFn: () => getSearchResultApi(keyword),
   });
@@ -48,7 +48,7 @@ const Result = ({ keyword }: ResultProps) => {
                   <Image
                     width={154}
                     height={227}
-                    className='rounded-[1rem] object-cover'
+                    className='h-[227px] rounded-[1rem] object-cover'
                     src={`https://emotioncores.com${work.coverImageUrl}` || ''}
                     alt={work.title}
                     priority
@@ -92,9 +92,8 @@ const Result = ({ keyword }: ResultProps) => {
                   width={154}
                   height={154}
                   src={author.profileImageUrl === null ? '' : `https://emotioncores.com${author.profileImageUrl}`}
-                  // src={`https://emotioncores.com${author.profileImageUrl}`}
                   alt={author.authorName}
-                  className='rounded-full border border-gray-300 object-cover'
+                  className='h-[154px] rounded-full border border-gray-300 object-cover'
                   priority
                 />
                 <div className='flex flex-col pl-[2.9rem]'>
