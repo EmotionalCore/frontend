@@ -36,7 +36,7 @@ const WorkSection = ({ keyword, title, queryKey, fetchFn, hasMoreLink = false, v
       <div className={headerStyles({ hasMoreLink })}>
         <h2 className='font-SCDream5 text-32-500'>{title}</h2>
         {hasMoreLink && (
-          <Link href={`/board/${keyword}`} className='font-SCDream5 text-16-500 text-gray-6'>
+          <Link href={`/forum/${keyword}`} className='font-SCDream5 text-16-500 text-gray-6'>
             더보기
           </Link>
         )}

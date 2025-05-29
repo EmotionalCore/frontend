@@ -6,7 +6,7 @@ import React from 'react';
 const HeadersWrapper = () => {
   const router = usePathname();
   const hasMainPage = router == '/';
-  const hasBoardPage = router.startsWith('/board');
+  const hasBoardPage = router.startsWith('/forum');
   const hasSearchPage = router.startsWith('/search');
   const hasLibraryPage = router.startsWith('/library');
   return (

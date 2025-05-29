@@ -60,7 +60,7 @@ export const CardItem = ({ data, variant, id }: CardItemProps) => {
 
   return (
     <Link
-      href={`board/works/detail/${data.id}`}
+      href={`forum/works/detail/${data.id}`}
       className={cn(cardContainerVariants({ layout: isHorizontalLayout ? 'horizontal' : 'vertical' }), 'w-[38.7rem]')}
     >
       <div className={cn(isHorizontalLayout ? 'flex gap-[3rem] p-[2rem]' : 'block')}>
