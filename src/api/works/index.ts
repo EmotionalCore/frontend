@@ -1,5 +1,13 @@
 import { apiRequest } from '@/app/_lib/axios/instance/instance';
-import { GetMyWorksProps, PostWorkEpisodeProps, PostWorkSeriesProps, TagsProps, WorkData, TagData, SearchData } from './type';
+import {
+  GetMyWorksProps,
+  PostWorkEpisodeProps,
+  PostWorkSeriesProps,
+  TagsProps,
+  WorkData,
+  TagData,
+  SearchData,
+} from './type';
 import { worksAddress } from '../address';
 
 export const getBestWorksApi = (): Promise<WorkData[]> => apiRequest('get', worksAddress.best);
@@ -35,8 +43,3 @@ export const getPopularTagsApi = (): Promise<TagData[]> => apiRequest('get', wor
 
 export const getSearchResultApi = (keyword: string): Promise<SearchData> =>
   apiRequest('get', worksAddress.search.default(keyword));
-
-export const getAllWorksApi = (pageNum: number): Promise<WorkData[]> => apiRequest('get', worksAddress.all(pageNum));
-
-// export const getTagWorksApi = (keyword: string): Promise<SearchData> =>
-//   apiRequest('get', worksAddress.tag.default(keyword));
