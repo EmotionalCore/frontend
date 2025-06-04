@@ -28,8 +28,8 @@ const NaverPage = () => {
 
       if (res.ok) {
         // accessToken 받기
-        const { accessToken } = await res.json();
-        localStorage.setItem('accessToken', accessToken);
+        const { access_token } = await res.json();
+        localStorage.setItem('accessToken', access_token);
         router.push('/');
       } else {
         console.error('토큰 요청 실패');
