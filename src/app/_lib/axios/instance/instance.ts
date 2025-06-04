@@ -47,7 +47,9 @@ const applyRequestInterceptor = (instance: typeof apiInstance) => {
 const applyResponseInterceptor = (instance: typeof apiInstance) => {
   instance.interceptors.response.use(
     (response) => response,
-    (error) => {
+    async (error) => {
+      const originalRequest = error.config;
+
       if (isAxiosError(error) && error.response) {
         const status = error.response.status;
         switch (status) {
@@ -55,7 +57,22 @@ const applyResponseInterceptor = (instance: typeof apiInstance) => {
             console.error('400: Bad Request');
             break;
           case HttpStatusCode.Unauthorized:
-            console.error('401: Unauthorized - Token may have expired');
+            if (!originalRequest._retry) {
+              originalRequest._retry = true;
+              console.error('401: Unauthorized - Token may have expired');
+
+              try {
+                const refreshToken = await apiInstance.post('/api/member/token/refresh', {}, { withCredentials: true });
+                console.log('refreshToken 전체 response:', refreshToken);
+                const newAccsessToken = refreshToken.data.accessToken;
+                console.log('New access token received:', newAccsessToken);
+                localStorage.setItem('accessToken', newAccsessToken);
+                originalRequest.headers.Authorization = `Bearer ${newAccsessToken}`;
+                return instance(originalRequest);
+              } catch (error) {
+                console.error('Token refresh failed:', error);
+              }
+            }
             break;
           case HttpStatusCode.Forbidden:
             console.error('403: Forbidden');
