@@ -46,26 +46,26 @@ export interface TagData {
 
 export interface SearchData {
   seriesDetailDTOList: {
-    id: number,
-    authorId: number,
-    authorName: string,
-    title: string,
-    coverImageUrl: string,
-    description: string,
-    type: string,
-    viewCount: number,
-    likeCount: number,
-    bookmarkCount: number,
-    tags: string[],
+    id: number;
+    authorId: number;
+    authorName: string;
+    title: string;
+    coverImageUrl: string;
+    description: string;
+    type: string;
+    viewCount: number;
+    likeCount: number;
+    bookmarkCount: number;
+    tags: string[];
   }[];
   authorDTOList: {
-    id: number,
-    authorName: string,
-    seriesCount: number,
-    description: string,
-    links: string,
-    tags: string[],
-    profileImageUrl: string,
+    id: number;
+    authorName: string;
+    seriesCount: number;
+    description: string;
+    links: string;
+    tags: string[];
+    profileImageUrl: string;
   }[];
 }
 
