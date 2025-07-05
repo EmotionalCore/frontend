@@ -9,4 +9,5 @@ export interface InputProps extends React.InputHTMLAttributes<HTMLInputElement> 
   errors?: FieldErrors;
   helpText?: string;
   placeholder?: string;
+  onClick?: () => void;
 }
