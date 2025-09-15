@@ -20,8 +20,8 @@ export const oauthAddress = {
 //작품 API
 export const worksAddress = {
   search: {
-    default: (keyword: string) => `${worksBaseUrl}search=${keyword}`,
-    popular: `${worksBaseUrl}popular`,
+    default: (keyword: string) => `${worksBaseUrl}search?keyword=${keyword}`,
+    popular: `${worksBaseUrl}search/popular`,
   },
 
   recommend: {
@@ -32,7 +32,7 @@ export const worksAddress = {
 
   new: {
     default: `${worksBaseUrl}new`,
-    author: `${worksBaseUrl}/new/author`,
+    author: `${worksBaseUrl}new/author`,
   },
   episode: `${worksBaseUrl}episode`,
   series: `${worksBaseUrl}series`,

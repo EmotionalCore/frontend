@@ -16,8 +16,10 @@ export const ButtonVariants = cva('rounded-[0.625rem] hover:brightness-90 active
       darkGray: 'bg-gray-5 text-white-F',
       white: 'bg-gray-EE text-black-0',
       whiteBorder: 'bg-white-F text-black-0 border-[1px] border-gray-B',
+      grayBorder: 'border border-gray-B bg-gray-FA text-gray-6',
     },
     size: {
+      xxxs: 'rounded-xl flex items-center justify-center p-[0.88rem_1rem] text-[1.4rem] font-SCDream5',
       xxs: 'flex px-[2.2rem] py-[2rem] justify-center items-center text-[1.6rem] font-SCDream5',
       xs: 'flex w-[25.7rem] h-[6.7rem] px-[0.7rem] py-[1rem] justify-center items-center text-[2rem] font-SCDream5',
       sm: 'flex w-[40.6rem] h-[9.6rem] px-[0.7rem] py-[1rem] justify-center items-center gap-1.25 text-[2.4rem] font-SCDream5',

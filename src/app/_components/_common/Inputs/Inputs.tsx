@@ -12,7 +12,7 @@ const inputBoxVariants = cva('', {
     layout: {
       default: 'mx-auto mb-[2rem] h-[13.6rem] w-[59rem]',
       checkbox: 'mx-auto flex w-[59rem] items-center',
-      search: 'relative mx-auto flex w-[120.3rem] h-[8.2rem]',
+      search: 'relative mx-auto flex w-[115.2rem] h-[8.2rem]',
     },
   },
   defaultVariants: {
@@ -121,8 +121,8 @@ const Inputs = forwardRef<HTMLInputElement, InputProps>(({ name, type, helpText,
             className={cn(inputTextVariants({ border: 'search' }))}
             {...props}
           />
-          <button type='submit' title='Search' className='absolute right-[7rem] top-1/2 size-[4.4rem] -translate-y-1/2'>
-            <Image src={SearchIcon} alt='search' />
+          <button type='submit' title='Search' className='absolute right-[2rem] top-1/2 size-[4.4rem] -translate-y-1/2'>
+            <Image src={SearchIcon} alt='search'></Image>
           </button>
         </div>
       )}
